@@ -1,0 +1,255 @@
+/* ==========================================================================
+   SUGARBERRY COTTAGE — site-wide settings
+   Everything a beginner needs to change the look lives in this one file.
+   Loaded by every page, AFTER the design-system stylesheet.
+   --------------------------------------------------------------------------
+   1. BRAND COLOURS        2. FONTS
+   3. PAGE BASICS          4. LINKS
+   5. GENTLE ANIMATIONS    6. RESPONSIVE (nav on small screens)
+   7. PRINT-FRIENDLY PRODUCT LIST
+   ========================================================================== */
+
+/* ---------- 1. BRAND COLOURS ---------------------------------------------
+   Taken from the Sugarberry Cottage logo. Change a value here and it
+   updates everywhere on the site.                                        */
+:root {
+  --berry: oklch(0.45 0.16 18);            /* deep jam red — buttons, headings   */
+  --berry-deep: oklch(0.36 0.13 18);       /* darker berry — pressed buttons     */
+  --pink: oklch(0.68 0.115 5);             /* the pink of the logo script        */
+  --pink-ink: oklch(0.52 0.135 5);         /* darker pink — readable script text  */
+  --blush: oklch(0.945 0.026 8);           /* palest pink — soft section bands   */
+  --blush-deep: oklch(0.885 0.05 6);       /* blush for circles and borders      */
+  --sage: var(--color-accent-2);           /* muted sage green (design system)   */
+  --sage-soft: var(--color-accent-2-200);  /* palest sage — tints                */
+  --cream: var(--color-bg);                /* warm cream page background         */
+  --sand: var(--color-surface);            /* slightly deeper cream — cards      */
+  --ink: var(--color-text);                /* body text                          */
+  --ink-soft: color-mix(in srgb, var(--color-text) 72%, transparent);
+  --hairline: color-mix(in srgb, var(--color-text) 12%, transparent);
+  --honey: oklch(0.89 0.115 88);            /* soft yellow — notice banner        */
+  --honey-deep: oklch(0.78 0.115 82);       /* its border                        */
+  --honey-ink: oklch(0.36 0.075 70);        /* readable brown text on honey      */
+  --rubble: oklch(0.72 0.045 70);           /* soft brown — decorative rubble    */
+  --rubble-light: oklch(0.83 0.035 78);     /* lighter chunks in the pile        */
+  --crack: oklch(0.62 0.04 60);             /* thin crack lines                  */
+}
+
+/* ---------- 2. FONTS -----------------------------------------------------
+   Script = the decorative "Sugarberry" voice. Serif = titles.
+   Body = paragraphs, buttons and product info (from the design system).  */
+:root {
+  --font-script: "Parisienne", cursive;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+}
+
+/* ---------- 3. PAGE BASICS ---------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 132px; /* so anchors clear the sticky header */
+}
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: clip;           /* never scroll sideways on a phone */
+}
+img { max-width: 100%; }
+:focus-visible {              /* clear focus ring for keyboard users */
+  outline: 2px solid var(--berry);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- 4. LINKS ---------------------------------------------------- */
+a { color: var(--berry); text-underline-offset: 3px; }
+a:hover { color: var(--berry-deep); }
+a[data-current="page"] { color: var(--berry); font-weight: 700; }
+
+/* ---------- 5. GENTLE ANIMATIONS ---------------------------------------
+   Blocks marked data-rise fade up softly as they scroll into view.      */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+/* Only browsers that support scroll-driven animation get the fade. Everywhere
+   else the content simply shows — never hidden by an animation that cannot run. */
+@supports (animation-timeline: view()) {
+  [data-rise] {
+    animation: riseIn 0.7s ease-out both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 26%;
+  }
+}
+/* Respect a visitor's "reduce motion" setting — no movement at all. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  [data-rise] { animation: none; opacity: 1; transform: none; }
+  * { transition-duration: 0.01ms !important; }
+}
+
+/* ---------- 6. RESPONSIVE: the navigation bar on small screens ---------
+   These two rules own the `display` of the nav parts, so the page links
+   really do disappear when the hamburger menu takes over.              */
+[data-nav-links] { display: flex; }
+[data-nav-toggle] { display: none; }
+@media (max-width: 960px) {
+  [data-nav-links], [data-nav-cta] { display: none; }
+  [data-nav-toggle] { display: inline-flex; }
+  html { scroll-padding-top: 116px; }
+}
+
+/* ---------- 6e. CONSTRUCTION DECORATION --------------------------------
+   The rubble piles, cracks and tape scattered around the home page while
+   the site is being built. Purely decorative — never clickable, always
+   behind the content. Delete the [data-deco] elements from
+   "Sugarberry Cottage.dc.html" when the site is finished.               */
+[data-deco] {
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  line-height: 0;
+}
+[data-deco] svg { display: block; }
+@media (max-width: 700px) {
+  /* Fewer bits and pieces on a phone, so the page stays calm. */
+  [data-deco="extra"] { display: none; }
+}
+
+/* ---------- 6a. "SKIP TO CONTENT" LINK ---------------------------------
+   Hidden until a keyboard user tabs to it. Sized to nothing rather than
+   pushed off-screen, so it stays hidden no matter what sits above the
+   navigation bar.                                                       */
+[data-skip-link] {
+  position: absolute; left: 12px; top: 6px; z-index: 5;
+  width: 1px; height: 1px; padding: 0;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+  background: var(--berry); color: #fff;
+  border-radius: 999px; font-size: 14px; text-decoration: none;
+}
+[data-skip-link]:focus {
+  width: auto; height: auto; padding: 8px 16px;
+  overflow: visible; clip-path: none; color: #fff;
+}
+
+/* ---------- 6b. PRODUCT FILTER BUTTONS --------------------------------- */
+[data-chip] {
+  white-space: nowrap;
+  background: transparent;
+  border: 1px solid currentColor;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+[data-chip="cat"] { color: var(--berry); }
+[data-chip="avail"] { color: var(--color-accent-2-700); }
+[data-chip="cat"]:hover { background: color-mix(in srgb, var(--berry) 10%, transparent); }
+[data-chip="avail"]:hover { background: color-mix(in srgb, var(--color-accent-2-700) 12%, transparent); }
+[data-chip][data-active="true"] { color: #fff; }
+[data-chip="cat"][data-active="true"] { background: var(--berry); border-color: var(--berry); }
+[data-chip="avail"][data-active="true"] { background: var(--color-accent-2-700); border-color: var(--color-accent-2-700); }
+[data-chip="cat"][data-active="true"]:hover { background: var(--berry-deep); }
+[data-chip="avail"][data-active="true"]:hover { background: var(--color-accent-2-800); }
+
+/* ---------- 6d. PICKUP / SHIPPING CHOICE (contact form) ---------------- */
+[data-choice] {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 11px 18px; border-radius: 999px;
+  border: 1px solid var(--hairline); background: transparent;
+  font-size: 15px; font-weight: 600; cursor: pointer;
+  transition: border-color .15s ease, background .15s ease;
+}
+[data-choice]:hover { background: color-mix(in srgb, var(--berry) 7%, transparent); }
+[data-choice]:has(input:checked) {
+  border-color: var(--berry); color: var(--berry);
+  background: color-mix(in srgb, var(--berry) 9%, transparent);
+}
+[data-choice] input { accent-color: var(--berry); width: 17px; height: 17px; margin: 0; }
+
+/* ---------- 6c. FAQ OPEN/CLOSE ROWS ------------------------------------ */
+summary { list-style: none; cursor: pointer; }
+summary::-webkit-details-marker { display: none; }
+summary::marker { content: ""; }
+details[open] [data-faq-plus] { transform: rotate(45deg); }
+[data-faq-plus] { transition: transform 0.2s ease; }
+
+/* The plain price list is hidden on screen and appears only when printing. */
+[data-print-list] { display: none; }
+
+/* ---------- 7. PRINT-FRIENDLY PRODUCT LIST -----------------------------
+   Printing the Products page gives a clean price list, no photos.       */
+@media print {
+  [data-noprint], [data-nav-toggle] { display: none !important; }
+  body { background: #fff; }
+  [data-print-list] { display: block !important; }
+  [data-gallery] { display: none !important; }
+}
+
+
+/* ==========================================================================
+   8. STATIC SITE ADDITIONS
+   These rules only apply to the published website in this folder. They
+   replace hover and menu behaviour that the design preview handled itself.
+   ========================================================================== */
+
+/* Buttons and links darken slightly on hover, whatever colour they are. */
+a.btn:hover, button.btn:hover { filter: brightness(0.94); }
+a.btn:active, button.btn:active { filter: brightness(0.88); }
+
+/* Navigation bar links */
+[data-nav-links] a:hover { color: var(--berry); }
+#cottage-menu a:hover { color: var(--berry); }
+footer a:hover { color: var(--blush-deep); }
+
+/* The mobile menu is plain hidden markup until the button opens it. */
+#cottage-menu[hidden] { display: none; }
+#cottage-menu {
+  border-top: 1px solid var(--hairline);
+  background: var(--cream);
+  padding: 10px clamp(16px, 4vw, 44px) 18px;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body);
+  font-size: 17px;
+}
+#cottage-menu a {
+  color: var(--ink);
+  text-decoration: none;
+  padding: 13px 4px;
+  border-bottom: 1px solid var(--hairline);
+}
+#cottage-menu a:last-of-type { border-bottom: none; }
+#cottage-menu .btn { margin-top: 12px; align-self: flex-start; border-bottom: none; }
+
+/* Back-to-top button */
+[data-to-top][hidden] { display: none; }
+[data-to-top] {
+  position: fixed;
+  right: clamp(14px, 3vw, 30px);
+  bottom: clamp(14px, 3vw, 30px);
+  width: 50px; height: 50px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: none; border-radius: 999px;
+  background: var(--berry); color: #fff;
+  box-shadow: var(--shadow-md);
+  cursor: pointer; z-index: 70;
+}
+[data-to-top]:hover { background: var(--berry-deep); }
+
+/* Photo areas waiting for a real photograph. To use your own picture,
+   replace the whole <div class="photo-slot"> with:
+     <img src="images/your-photo.jpg" alt="what the photo shows">        */
+.photo-slot {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  padding: 18px; box-sizing: border-box;
+  background: var(--color-neutral-200);
+  text-align: center;
+}
+.photo-slot span {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-neutral-700);
+}
+
+/* Hidden things stay hidden. */
+[hidden] { display: none !important; }
