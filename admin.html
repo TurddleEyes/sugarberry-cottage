@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Product Manager — Sugarberry Cottage</title>
+<link rel="icon" href="images/logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Parisienne&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600&display=swap">
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="site.css">
+<style>
+  /* ── Product manager styles. Nothing here affects the website. ──────── */
+  body { background: var(--cream); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px); }
+
+  .topbar { background: var(--blush); border-bottom: 1px solid var(--blush-deep); padding: 20px 0; }
+  .topbar-inner { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+
+  .sticky-save {
+    position: sticky; bottom: 0; z-index: 40;
+    background: color-mix(in srgb, var(--cream) 96%, transparent);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--hairline);
+    padding: 14px 0;
+  }
+  .sticky-save .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+
+  .btn-main {
+    background: var(--berry); color: #fff; border: none;
+    font-family: var(--font-body); font-weight: 700; font-size: 16px;
+    padding: 13px 24px; border-radius: 999px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 9px; white-space: nowrap;
+  }
+  .btn-main:hover { background: var(--berry-deep); }
+  .btn-line {
+    background: transparent; color: var(--berry); border: 1px solid var(--berry);
+    font-family: var(--font-body); font-weight: 700; font-size: 15px;
+    padding: 11px 20px; min-height: 44px; border-radius: 999px; cursor: pointer; white-space: nowrap;
+  }
+  .btn-line:hover { background: color-mix(in srgb, var(--berry) 8%, transparent); }
+  .btn-quiet {
+    background: transparent; color: var(--ink-soft); border: 1px solid var(--hairline);
+    font-family: var(--font-body); font-weight: 600; font-size: 14px;
+    padding: 8px 16px; min-height: 44px; border-radius: 999px; cursor: pointer; white-space: nowrap;
+  }
+  .btn-quiet:hover { background: color-mix(in srgb, var(--ink) 5%, transparent); color: var(--ink); }
+  .btn-danger { color: var(--berry); border-color: color-mix(in srgb, var(--berry) 35%, transparent); }
+  .btn-danger:hover { background: color-mix(in srgb, var(--berry) 10%, transparent); color: var(--berry-deep); }
+  button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+  /* Shop open / closed switch. The whole strip is the tap target, so the
+     label beside the switch works too. */
+  .switch {
+    display: flex; align-items: center; gap: 12px; margin-left: auto;
+    background: transparent; border: 1px solid transparent; border-radius: 999px;
+    padding: 6px 8px 6px 14px; cursor: pointer; text-align: right; min-height: 44px;
+    font: inherit; color: inherit;
+  }
+  .switch:hover { background: color-mix(in srgb, var(--berry) 6%, transparent); border-color: var(--blush-deep); }
+  .switch-track {
+    width: 58px; height: 32px; border-radius: 999px; border: none;
+    background: var(--color-neutral-400); padding: 3px;
+    display: flex; flex: 0 0 auto; transition: background 0.18s ease; pointer-events: none;
+  }
+  .switch[data-on="true"] .switch-track { background: var(--color-accent-2-600); }
+  .switch-knob {
+    width: 26px; height: 26px; border-radius: 50%; background: #fff;
+    transition: transform 0.18s ease; box-shadow: var(--shadow-sm);
+  }
+  .switch[data-on="true"] .switch-knob { transform: translateX(26px); }
+
+  /* Product rows */
+  .row {
+    background: var(--sand); border: 1px solid var(--hairline);
+    border-radius: 24px; margin-bottom: 14px; overflow: hidden;
+  }
+  .row-head {
+    display: grid; grid-template-columns: 62px minmax(0, 1fr) auto;
+    gap: 16px; align-items: center; padding: 14px 16px;
+  }
+  .row-thumb {
+    width: 62px; height: 62px; border-radius: 16px; overflow: hidden;
+    background: var(--color-neutral-200); display: flex;
+    align-items: center; justify-content: center; flex: 0 0 auto;
+  }
+  .row-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .row-thumb span { font-size: 22px; color: var(--color-neutral-500); }
+  .row-name { font-family: var(--font-serif); font-weight: 600; font-size: 20px; line-height: 1.2; }
+  .row-meta { font-family: var(--font-body); font-size: 14px; color: var(--ink-soft); margin-top: 3px; }
+  .row-tools { display: flex; align-items: center; gap: 6px; }
+  .icon-btn {
+    width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--hairline);
+    background: transparent; color: var(--ink-soft); cursor: pointer; font-size: 17px;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .icon-btn:hover { background: color-mix(in srgb, var(--ink) 6%, transparent); color: var(--ink); }
+
+  .row-body { padding: 4px 16px 20px; border-top: 1px solid var(--hairline); }
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: 14px; }
+  .fld { display: flex; flex-direction: column; gap: 6px; margin-top: 14px; }
+  .fld label { font-family: var(--font-body); font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+  .fld .hint { font-family: var(--font-body); font-size: 12.5px; color: var(--ink-soft); }
+  .fld input, .fld select, .fld textarea {
+    font-family: var(--font-body); font-size: 16px; padding: 11px 15px;
+    border: 1px solid var(--hairline); border-radius: 14px;
+    background: var(--cream); color: var(--ink); width: 100%; box-sizing: border-box;
+  }
+  .fld textarea { border-radius: 16px; resize: vertical; }
+  .fld input:focus, .fld select:focus, .fld textarea:focus {
+    outline: 2px solid var(--berry); outline-offset: 1px; border-color: transparent;
+  }
+
+  /* Photo drop area */
+  .drop {
+    margin-top: 14px; border: 2px dashed var(--blush-deep); border-radius: 20px;
+    padding: 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px;
+    background: color-mix(in srgb, var(--blush) 45%, transparent); cursor: pointer;
+  }
+  .drop[data-over="true"] { border-color: var(--berry); background: color-mix(in srgb, var(--berry) 8%, transparent); }
+  .drop-preview {
+    width: 116px; height: 116px; border-radius: 16px; overflow: hidden; flex: 0 0 auto;
+    background: var(--color-neutral-200); display: flex; align-items: center;
+    justify-content: center; text-align: center; padding: 8px; box-sizing: border-box;
+  }
+  .drop-preview img { width: 100%; height: 100%; object-fit: cover; }
+  .drop-preview span { font-family: var(--font-body); font-size: 12px; color: var(--color-neutral-600); }
+  .drop-text { flex: 1 1 200px; font-family: var(--font-body); font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); }
+  .drop-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+
+  .pill-new {
+    display: inline-block; background: var(--color-accent-2-200); color: var(--color-accent-2-800);
+    font-family: var(--font-body); font-size: 12px; font-weight: 700;
+    padding: 3px 10px; border-radius: 999px; margin-left: 8px;
+  }
+
+  .note {
+    background: var(--color-accent-2-100); border: 1px solid var(--sage);
+    border-radius: 20px; padding: 18px 20px; font-family: var(--font-body);
+    font-size: 15px; line-height: 1.65;
+  }
+  .note h2 { font-family: var(--font-serif); font-size: 21px; font-weight: 600; margin: 0 0 8px; }
+  .note ol { margin: 8px 0 0; padding-left: 22px; }
+  .note li { margin-bottom: 7px; }
+  .note code {
+    background: var(--cream); padding: 1px 7px; border-radius: 7px;
+    font-size: 13.5px; border: 1px solid var(--hairline);
+  }
+
+  .warn { background: color-mix(in srgb, var(--honey) 40%, transparent); border-color: var(--honey-deep); }
+
+  @media (max-width: 620px) {
+    .row-head { grid-template-columns: 48px minmax(0, 1fr); grid-template-areas: "thumb name" "tools tools"; }
+    .row-thumb { width: 48px; height: 48px; grid-area: thumb; }
+    .row-head > div:nth-child(2) { grid-area: name; }
+    .row-tools { grid-area: tools; justify-content: flex-end; margin-top: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap topbar-inner">
+    <img src="images/logo-horizontal.png" alt="" style="height: 46px; width: auto;">
+    <div>
+      <h1 style="font-family: var(--font-serif); font-weight: 600; font-size: 26px; margin: 0; line-height: 1.1;">Product manager</h1>
+      <p style="font-family: var(--font-body); font-size: 14px; color: var(--ink-soft); margin: 3px 0 0;">Changes are kept on this computer until you download them.</p>
+    </div>
+
+    <button type="button" class="switch" id="shopToggle" role="switch" aria-checked="false" data-on="false">
+      <span style="display: block; text-align: right;">
+        <span style="display: block; font-family: var(--font-body); font-size: 14px; font-weight: 700;" id="shopLabel">Shop closed</span>
+        <span style="display: block; font-family: var(--font-body); font-size: 12.5px; color: var(--ink-soft);" id="shopSub">Visitors see the opening soon note instead</span>
+      </span>
+      <span class="switch-track" aria-hidden="true"><span class="switch-knob"></span></span>
+    </button>
+  </div>
+</div>
+
+<main class="wrap" style="padding-top: 26px; padding-bottom: 20px;">
+
+  <div id="storageWarn" class="note warn" hidden style="margin-bottom: 20px;">
+    <h2>Running out of room for photos</h2>
+    <p style="margin: 0;">This page can only hold so many photos before you save them. Press <strong>Save everything</strong> below, upload what it gives you, then press <strong>Clear saved photos</strong> to make room again.</p>
+  </div>
+
+  <div class="note" style="margin-bottom: 24px;">
+    <h2>Your ordering page</h2>
+    <p style="margin: 0 0 12px;">This is where every &ldquo;Order online&rdquo; button on your website sends people. Change it here and all of them follow.</p>
+    <div class="fld" style="margin-top: 0;">
+      <label for="orderingUrl">Ordering page address</label>
+      <input id="orderingUrl" type="url" placeholder="https://cash.app/$sugarberrycottage" autocomplete="off">
+    </div>
+    <p id="orderingState" style="margin: 10px 0 0; font-size: 14px;"></p>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; margin-bottom: 16px;">
+    <h2 style="font-family: var(--font-serif); font-weight: 600; font-size: 24px; margin: 0;">Your products</h2>
+    <span id="countLine" style="font-family: var(--font-body); font-size: 15px; color: var(--ink-soft);"></span>
+    <button type="button" class="btn-line" id="addBtn" style="margin-left: auto;">+ Add a product</button>
+  </div>
+
+  <div id="list"></div>
+
+
+
+  <div class="note" style="margin-top: 26px;">
+    <h2>When you have finished</h2>
+    <p style="margin: 0;">Press <strong>Save everything</strong> at the bottom. Your browser will download a file called <code>products-data.js</code>, plus a photo file for each new picture you added.</p>
+    <ol>
+      <li>Go to your repository on <strong>github.com</strong>.</li>
+      <li>Click <strong>Add file → Upload files</strong>.</li>
+      <li>Drag in <code>products-data.js</code>. It replaces the old one.</li>
+      <li>If you added photos, open the <code>images</code> folder first, then the <code>products</code> folder inside it, and upload them there.</li>
+      <li>Click <strong>Commit changes</strong>. The website updates within a minute.</li>
+    </ol>
+  </div>
+</main>
+
+<div class="sticky-save">
+  <div class="wrap">
+    <button type="button" class="btn-main" id="saveBtn">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="M7 10l5 5 5-5"></path><path d="M12 15V3"></path></svg>
+      Save everything
+    </button>
+    <span id="saveHint" style="font-family: var(--font-body); font-size: 14px; color: var(--ink-soft);"></span>
+    <button type="button" class="btn-quiet" id="clearPhotosBtn" style="margin-left: auto;">Clear saved photos</button>
+    <button type="button" class="btn-quiet btn-danger" id="resetBtn">Start over from the live site</button>
+  </div>
+</div>
+
+<script src="products-data.js"></script>
+<script>
+/* ==========================================================================
+   PRODUCT MANAGER
+   Everything happens on your own computer. Nothing is sent anywhere.
+   Your work in progress is remembered by this browser until you download it.
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  /* Where your work in progress is kept in this browser. The number goes up
+     whenever the product list changes shape, so a saved draft from an older
+     version cannot overwrite newer products. */
+  var STORE = 'sugarberry-admin-v4';
+  var CATS = [
+    ['breads', 'Breads'], ['rolls', 'Rolls'], ['cookies', 'Cookies']
+  ];
+  var STATUSES = ['Available', 'Sold Out', 'Seasonal', 'Coming Soon'];
+
+  var state = load();
+  var openRows = {};
+
+  /* ---------- storage ---------------------------------------------------- */
+  function fresh() {
+    return {
+      orderingUrl: (window.SUGARBERRY && window.SUGARBERRY.orderingUrl) || '',
+      shopOpen: (window.SUGARBERRY && window.SUGARBERRY.shopOpen) || false,
+      products: JSON.parse(JSON.stringify((window.SUGARBERRY && window.SUGARBERRY.products) || [])),
+      pending: {}   // key -> data URL of a photo not yet downloaded
+    };
+  }
+  function load() {
+    try {
+      var raw = localStorage.getItem(STORE);
+      if (raw) {
+        var v = JSON.parse(raw);
+        if (v && v.products) {
+          v.pending = v.pending || {};
+          if (typeof v.orderingUrl !== 'string') {
+            v.orderingUrl = (window.SUGARBERRY && window.SUGARBERRY.orderingUrl) || '';
+          }
+          return v;
+        }
+      }
+    } catch (e) { /* fall through to a fresh copy */ }
+    return fresh();
+  }
+  function save() {
+    try {
+      localStorage.setItem(STORE, JSON.stringify(state));
+      document.getElementById('storageWarn').hidden = true;
+    } catch (e) {
+      document.getElementById('storageWarn').hidden = false;
+    }
+  }
+
+  /* ---------- helpers ---------------------------------------------------- */
+  function slug(name, ignoreKey) {
+    var base = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'product';
+    var key = base, n = 2;
+    while (state.products.some(function (p) { return p.key === key && p.key !== ignoreKey; })) {
+      key = base + '-' + n++;
+    }
+    return key;
+  }
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function photoFor(p) {
+    if (state.pending[p.key]) { return state.pending[p.key]; }
+    if (p.img) { return 'images/products/' + p.img; }
+    return null;
+  }
+  function catLabel(c) {
+    for (var i = 0; i < CATS.length; i++) { if (CATS[i][0] === c) { return CATS[i][1]; } }
+    return c;
+  }
+
+  /* ---------- drawing the list ------------------------------------------- */
+  function render() {
+    var list = document.getElementById('list');
+    list.innerHTML = '';
+
+    state.products.forEach(function (p, i) {
+      var row = document.createElement('div');
+      row.className = 'row';
+      var src = photoFor(p);
+      var isNew = !!state.pending[p.key];
+      var open = !!openRows[p.key];
+
+      row.innerHTML =
+        '<div class="row-head">' +
+          '<div class="row-thumb">' +
+            (src ? '<img src="' + esc(src) + '" alt="">' : '<span>&#9737;</span>') +
+          '</div>' +
+          '<div style="min-width:0;">' +
+            '<div class="row-name">' + esc(p.name || 'Untitled') +
+              (isNew ? '<span class="pill-new">new photo</span>' : '') + '</div>' +
+            '<div class="row-meta">' + esc(catLabel(p.cat)) + ' &middot; ' +
+              esc(p.price || 'no price') + ' ' + esc(p.unit || '') + ' &middot; ' + esc(p.status) + '</div>' +
+          '</div>' +
+          '<div class="row-tools">' +
+            '<button type="button" class="icon-btn" data-act="up" title="Move up"' + (i === 0 ? ' disabled' : '') + '>&#8593;</button>' +
+            '<button type="button" class="icon-btn" data-act="down" title="Move down"' + (i === state.products.length - 1 ? ' disabled' : '') + '>&#8595;</button>' +
+            '<button type="button" class="btn-quiet" data-act="edit">' + (open ? 'Close' : 'Edit') + '</button>' +
+          '</div>' +
+        '</div>';
+
+      if (open) {
+        var body = document.createElement('div');
+        body.className = 'row-body';
+        body.innerHTML =
+          '<div class="grid2">' +
+            fld('Product name', '<input data-f="name" type="text" value="' + esc(p.name) + '">') +
+            fld('Category', sel('cat', p.cat, CATS)) +
+          '</div>' +
+          '<div class="grid2">' +
+            fld('Price', '<input data-f="price" type="text" value="' + esc(p.price) + '" placeholder="$5.00">', 'Leave empty to show no price') +
+            fld('Per what?', '<input data-f="unit" type="text" value="' + esc(p.unit) + '" placeholder="each">') +
+            fld('Availability', sel('status', p.status, STATUSES.map(function (s) { return [s, s]; }))) +
+          '</div>' +
+          fld('Description', '<textarea data-f="desc" rows="2">' + esc(p.desc) + '</textarea>', 'One short sentence') +
+          '<div class="drop" data-drop>' +
+            '<div class="drop-preview">' +
+              (src ? '<img src="' + esc(src) + '" alt="">' : '<span>' + esc(p.photo || 'No photo yet') + '</span>') +
+            '</div>' +
+            '<div class="drop-text">' +
+              '<strong>Photo.</strong> Tap anywhere in this box to choose a picture, or drag one in.<br>' +
+              'It will be shrunk to a sensible size for you and saved as <code style="font-size:13px;">' + esc(p.key) + '.jpg</code>.' +
+              '<div class="drop-actions">' +
+                '<button type="button" class="btn-quiet" data-act="pick">' +
+                  (src ? 'Choose a different picture' : 'Choose a picture') +
+                '</button>' +
+                (src ? '<button type="button" class="btn-quiet" data-act="rmphoto">Remove photo</button>' : '') +
+              '</div>' +
+            '</div>' +
+            '<input type="file" accept="image/*" data-f="photofile" hidden>' +
+          '</div>' +
+          fld('Caption while there is no photo', '<input data-f="photo" type="text" value="' + esc(p.photo) + '">', 'Shown in the grey box on the website') +
+          '<div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">' +
+            '<button type="button" class="btn-quiet btn-danger" data-act="del">Delete this product</button>' +
+          '</div>';
+        row.appendChild(body);
+      }
+
+      row.addEventListener('click', function (e) {
+        var act = e.target.closest('[data-act]');
+        if (!act) { return; }
+        var a = act.getAttribute('data-act');
+        if (a === 'edit') { openRows[p.key] = !openRows[p.key]; render(); }
+        if (a === 'up' && i > 0) { swap(i, i - 1); }
+        if (a === 'down' && i < state.products.length - 1) { swap(i, i + 1); }
+        if (a === 'del') {
+          if (confirm('Delete "' + p.name + '"? This cannot be undone.')) {
+            state.products.splice(i, 1);
+            delete state.pending[p.key];
+            save(); render();
+          }
+        }
+        if (a === 'rmphoto') {
+          delete state.pending[p.key];
+          p.img = '';
+          save(); render();
+        }
+      });
+
+      row.addEventListener('input', function (e) {
+        var f = e.target.getAttribute('data-f');
+        if (!f || f === 'photofile') { return; }
+        p[f] = e.target.value;
+
+        /* While a product has no photo yet, keep its filename in step with
+           its name — so "Rhubarb Jam" saves as rhubarb-jam.jpg rather than
+           new-product-2.jpg. Once a photo exists the name is frozen, since
+           the uploaded file is already called after it. */
+        if (f === 'name' && !p.img && !state.pending[p.key]) {
+          var next = slug(p.name || 'product', p.key);
+          if (next !== p.key) {
+            if (openRows[p.key]) { delete openRows[p.key]; openRows[next] = true; }
+            p.key = next;
+            var code = row.querySelector('.drop-text code');
+            if (code) { code.textContent = next + '.jpg'; }
+          }
+        }
+
+        save();
+        var head = row.querySelector('.row-name');
+        if (f === 'name' && head) { head.childNodes[0].nodeValue = p.name || 'Untitled'; }
+      });
+
+      row.addEventListener('change', function (e) {
+        if (e.target.getAttribute('data-f') === 'photofile' && e.target.files[0]) {
+          takePhoto(p, e.target.files[0]);
+        }
+      });
+
+      var drop = row.querySelector('[data-drop]');
+      if (drop) {
+        // Tapping anywhere in the box opens the picker. This is the only way
+        // to add a photo on a phone, where dragging does not exist.
+        drop.addEventListener('click', function (e) {
+          // Ignore the remove button, and the picker's own click bubbling
+          // back up (which would otherwise reopen it forever).
+          if (e.target.closest('[data-act="rmphoto"]')) { return; }
+          if (e.target.getAttribute('data-f') === 'photofile') { return; }
+          drop.querySelector('[data-f="photofile"]').click();
+        });
+        ['dragenter', 'dragover'].forEach(function (ev) {
+          drop.addEventListener(ev, function (e) { e.preventDefault(); drop.setAttribute('data-over', 'true'); });
+        });
+        ['dragleave', 'drop'].forEach(function (ev) {
+          drop.addEventListener(ev, function (e) { e.preventDefault(); drop.removeAttribute('data-over'); });
+        });
+        drop.addEventListener('drop', function (e) {
+          var f = e.dataTransfer.files[0];
+          if (f && /^image\//.test(f.type)) { takePhoto(p, f); }
+        });
+      }
+
+      list.appendChild(row);
+    });
+
+    document.getElementById('countLine').textContent =
+      state.products.length + (state.products.length === 1 ? ' product' : ' products');
+
+    var pend = Object.keys(state.pending).length;
+    document.getElementById('saveHint').textContent = pend
+      ? 'You will get products-data.js plus ' + pend + (pend === 1 ? ' photo' : ' photos')
+      : 'You will get products-data.js';
+    document.getElementById('clearPhotosBtn').disabled = pend === 0;
+  }
+
+  function fld(label, control, hint) {
+    return '<div class="fld"><label>' + label + '</label>' +
+      (hint ? '<span class="hint">' + hint + '</span>' : '') + control + '</div>';
+  }
+  function sel(name, value, pairs) {
+    return '<select data-f="' + name + '">' + pairs.map(function (pr) {
+      return '<option value="' + esc(pr[0]) + '"' + (pr[0] === value ? ' selected' : '') + '>' + esc(pr[1]) + '</option>';
+    }).join('') + '</select>';
+  }
+  function swap(a, b) {
+    var t = state.products[a];
+    state.products[a] = state.products[b];
+    state.products[b] = t;
+    save(); render();
+  }
+
+  /* ---------- photos ------------------------------------------------------ */
+  function takePhoto(p, file) {
+    var reader = new FileReader();
+    reader.onload = function () {
+      var img = new Image();
+      img.onload = function () {
+        var maxW = 1000;
+        var scale = Math.min(1, maxW / img.width);
+        var c = document.createElement('canvas');
+        c.width = Math.round(img.width * scale);
+        c.height = Math.round(img.height * scale);
+        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+        state.pending[p.key] = c.toDataURL('image/jpeg', 0.82);
+        p.img = p.key + '.jpg';
+        save();
+        render();
+      };
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  /* ---------- saving ------------------------------------------------------ */
+  function download(name, blob) {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+  }
+  function dataUrlToBlob(u) {
+    var parts = u.split(',');
+    var bin = atob(parts[1]);
+    var arr = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) { arr[i] = bin.charCodeAt(i); }
+    return new Blob([arr], { type: 'image/jpeg' });
+  }
+  function buildFile() {
+    var lines = state.products.map(function (p) {
+      return '  { key: ' + JSON.stringify(p.key) +
+        ', name: ' + JSON.stringify(p.name) +
+        ', cat: ' + JSON.stringify(p.cat) +
+        ', price: ' + JSON.stringify(p.price) +
+        ', unit: ' + JSON.stringify(p.unit) +
+        ', status: ' + JSON.stringify(p.status) +
+        ',\n    desc: ' + JSON.stringify(p.desc) +
+        ', photo: ' + JSON.stringify(p.photo) +
+        ', img: ' + JSON.stringify(p.img || '') + ' }';
+    }).join(',\n');
+
+    return '/* ==========================================================================\n' +
+      '   SUGARBERRY COTTAGE - products-data.js\n' +
+      '   Written by the product manager (admin.html) on ' +
+      new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) + '.\n' +
+      '   Open admin.html to change it rather than editing this by hand.\n' +
+      '   ========================================================================== */\n' +
+      'window.SUGARBERRY = {\n\n' +
+      '  /* Where the "Order online" buttons send people. */\n' +
+      '  orderingUrl: ' + JSON.stringify(state.orderingUrl || '') + ',\n\n' +
+      '  shopOpen: ' + (state.shopOpen ? 'true' : 'false') + ',\n\n' +
+      '  products: [\n' + lines + '\n  ]\n};\n';
+  }
+
+  /* ---------- the ordering page address ---------------------------------- */
+  var orderingInput = document.getElementById('orderingUrl');
+  var orderingState = document.getElementById('orderingState');
+  function syncOrdering() {
+    if (state.orderingUrl) {
+      orderingState.textContent = 'The buttons on your website point here.';
+      orderingState.style.color = 'var(--color-accent-2-800)';
+    } else {
+      orderingState.textContent = 'Not set yet, so the buttons say ordering opens soon rather than leading anywhere.';
+      orderingState.style.color = 'var(--ink-soft)';
+    }
+  }
+  orderingInput.value = state.orderingUrl || '';
+  orderingInput.addEventListener('input', function () {
+    var v = orderingInput.value.trim();
+    // A bare address like cash.app/$name still needs https:// in front
+    if (v && !/^https?:\/\//i.test(v) && /\./.test(v)) { v = 'https://' + v; }
+    state.orderingUrl = v;
+    save();
+    syncOrdering();
+  });
+  syncOrdering();
+
+  document.getElementById('saveBtn').addEventListener('click', function () {
+    download('products-data.js', new Blob([buildFile()], { type: 'text/javascript' }));
+    var keys = Object.keys(state.pending);
+    keys.forEach(function (k, i) {
+      setTimeout(function () { download(k + '.jpg', dataUrlToBlob(state.pending[k])); }, 350 * (i + 1));
+    });
+    setTimeout(function () {
+      alert('Saved.\n\nCheck your Downloads folder for:\n  products-data.js' +
+        (keys.length ? '\n  ' + keys.map(function (k) { return k + '.jpg'; }).join('\n  ') : '') +
+        '\n\nUpload products-data.js to the top level of your repository.' +
+        (keys.length ? '\nUpload the photos into images/products/.' : ''));
+    }, 350 * (keys.length + 1) + 200);
+  });
+
+  document.getElementById('clearPhotosBtn').addEventListener('click', function () {
+    if (!confirm('Only do this after you have uploaded the photos to GitHub.\n\nClear them from this page?')) { return; }
+    state.pending = {};
+    save(); render();
+  });
+
+  document.getElementById('resetBtn').addEventListener('click', function () {
+    if (!confirm('Throw away every change you have made here and start again from what is on the live website?')) { return; }
+    localStorage.removeItem(STORE);
+    state = fresh();
+    openRows = {};
+    orderingInput.value = state.orderingUrl || '';
+    syncOrdering();
+    syncShop(); render();
+  });
+
+  document.getElementById('addBtn').addEventListener('click', function () {
+    var p = {
+      key: slug('new product'), name: 'New product', cat: 'breads', price: '$5.00',
+      unit: 'each', status: 'Available', desc: '', photo: 'Photo of this product',
+      img: ''
+    };
+    state.products.unshift(p);
+    openRows[p.key] = true;
+    save(); render();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  /* ---------- shop open / closed ------------------------------------------ */
+  function syncShop() {
+    var t = document.getElementById('shopToggle');
+    t.setAttribute('data-on', state.shopOpen ? 'true' : 'false');
+    t.setAttribute('aria-checked', state.shopOpen ? 'true' : 'false');
+    document.getElementById('shopLabel').textContent = state.shopOpen ? 'Shop open' : 'Shop closed';
+    document.getElementById('shopSub').textContent = state.shopOpen
+      ? 'Visitors can order online'
+      : 'Visitors see the opening soon note instead';
+  }
+  document.getElementById('shopToggle').addEventListener('click', function () {
+    state.shopOpen = !state.shopOpen;
+    save(); syncShop();
+  });
+
+  syncShop();
+  render();
+})();
+</script>
+</body>
+</html>

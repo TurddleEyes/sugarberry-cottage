@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Photo Finder — Sugarberry Cottage</title>
+<link rel="icon" href="images/logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Parisienne&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600&display=swap">
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="site.css">
+<style>
+  /* ── Photo finder. A private tool for you, not part of the website. ─── */
+  body { background: var(--cream); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px); }
+
+  .topbar { background: var(--blush); border-bottom: 1px solid var(--blush-deep); padding: 20px 0; }
+  .topbar-inner { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+
+  .note {
+    background: var(--color-accent-2-100); border: 1px solid var(--sage);
+    border-radius: 20px; padding: 18px 20px; font-family: var(--font-body);
+    font-size: 15px; line-height: 1.65;
+  }
+  .note h2 { font-family: var(--font-serif); font-size: 21px; font-weight: 600; margin: 0 0 8px; }
+  .note ul { margin: 8px 0 0; padding-left: 22px; }
+  .note li { margin-bottom: 6px; }
+  .note code {
+    background: var(--cream); padding: 1px 7px; border-radius: 7px;
+    font-size: 13.5px; border: 1px solid var(--hairline);
+  }
+  .warn { background: color-mix(in srgb, var(--honey) 40%, transparent); border-color: var(--honey-deep); }
+
+  .cat {
+    font-family: var(--font-serif); font-weight: 600; font-size: 24px;
+    margin: 30px 0 12px; display: flex; align-items: baseline; gap: 10px;
+  }
+  .cat span {
+    font-family: var(--font-body); font-size: 14px; font-weight: 600;
+    color: var(--ink-soft);
+  }
+
+  .row {
+    background: var(--sand); border: 1px solid var(--hairline);
+    border-radius: 22px; padding: 16px 18px; margin-bottom: 12px;
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px 20px;
+    align-items: center;
+  }
+  .row-name { font-family: var(--font-serif); font-weight: 600; font-size: 20px; line-height: 1.2; }
+  .row-terms {
+    font-family: var(--font-body); font-size: 14px; color: var(--ink-soft);
+    margin-top: 4px;
+  }
+  .row-terms strong { color: var(--ink); font-weight: 600; }
+  .row-links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lnk {
+    font-family: var(--font-body); font-size: 14.5px; font-weight: 700;
+    padding: 10px 18px; border-radius: 999px; text-decoration: none;
+    border: 1px solid var(--berry); color: var(--berry); white-space: nowrap;
+    display: inline-flex; align-items: center; min-height: 44px;
+    box-sizing: border-box;
+  }
+  .lnk:hover { background: color-mix(in srgb, var(--berry) 8%, transparent); color: var(--berry-deep); }
+  .lnk-2 { border-color: var(--color-accent-2-700); color: var(--color-accent-2-700); }
+  .lnk-2:hover { background: color-mix(in srgb, var(--color-accent-2-700) 12%, transparent); color: var(--color-accent-2-800); }
+
+  @media (max-width: 640px) {
+    .row { grid-template-columns: minmax(0, 1fr); }
+    .lnk { flex: 1 1 auto; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap topbar-inner">
+    <img src="images/logo-horizontal.png" alt="" style="height: 46px; width: auto;">
+    <div>
+      <h1 style="font-family: var(--font-serif); font-weight: 600; font-size: 26px; margin: 0; line-height: 1.1;">Photo finder</h1>
+      <p style="font-family: var(--font-body); font-size: 14px; color: var(--ink-soft); margin: 3px 0 0;">Free photos you can use for your product cards, one search per item.</p>
+    </div>
+  </div>
+</div>
+
+<main class="wrap" style="padding-top: 24px; padding-bottom: 40px;">
+
+  <div class="note warn" style="margin-bottom: 22px;">
+    <h2>Read this first</h2>
+    <p style="margin: 0 0 10px;">I cannot make photographs, and I will not hand you pictures whose licence I cannot check, because using the wrong one can land a small business with a bill. So this page does the next best thing: every button below runs a ready-made search on <strong>Pexels</strong> or <strong>Unsplash</strong>, two libraries whose photos are free to use commercially, no credit required, no account needed.</p>
+    <p style="margin: 0;">Click a button, pick a picture you like, press their download button, then add it to that product in admin.html.</p>
+  </div>
+
+  <div class="note" style="margin-bottom: 8px;">
+    <h2>What makes a listing photo sell</h2>
+    <ul>
+      <li><strong>Square shape, at least 1280 by 1280.</strong> Product cards crop to a square, so a tall photo loses its top and bottom.</li>
+      <li><strong>Show the inside.</strong> A cut loaf or a split roll sells better than a whole one. People want to see the crumb.</li>
+      <li><strong>Daylight, no flash.</strong> Near a window, mid morning.</li>
+      <li><strong>Keep the backgrounds consistent.</strong> Pick photos that share a similar surface and light, so your shelf looks like one kitchen rather than thirteen.</li>
+    </ul>
+    <p style="margin: 12px 0 0;">Worth saying plainly: your own phone photos will beat stock every time. Customers can tell the difference, and for a home kitchen the homemade look is the selling point. Use these to open the shop, then swap in your own as you bake.</p>
+  </div>
+
+  <!-- ══ THE ITEM LIST ═══════════════════════════════════════════════════
+       One row per product. To add an item, copy a .row block and change
+       the name and the search words.                                  -->
+
+  <h2 class="cat">Bread <span>5 items</span></h2>
+
+  <div class="row">
+    <div>
+      <div class="row-name">Pumpkin Bread</div>
+      <div class="row-terms">Searching: <strong>pumpkin bread loaf sliced</strong></div>
+    </div>
+    <div class="row-links">
+      <a class="lnk" href="https://www.pexels.com/search/pumpkin%20bread%20loaf%20sliced/" target="_blank" rel="noopener">Pexels</a>
+      <a class="lnk lnk-2" href="https://unsplash.com/s/photos/pumpkin-bread" target="_blank" rel="noopener">Unsplash</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <div class="row-name">Sandwich Bread</div>
+      <div class="row-terms">Searching: <strong>white sandwich bread loaf sliced</strong></div>
+    </div>
+    <div class="row-links">
+      <a class="lnk" href="https://www.pexels.com/search/sandwich%20bread%20loaf%20sliced/" target="_blank" rel="noopener">Pexels</a>
+      <a class="lnk lnk-2" href="https://unsplash.com/s/photos/sandwich-bread" target="_blank" rel="noopener">Unsplash</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <div class="row-name">Banana Bread</div>
+      <div class="row-terms">Searching: <strong>banana bread loaf sliced</strong></div>
+    </div>
+    <div class="row-links">
+      <a class="lnk" href="https://www.pexels.com/search/banana%20bread%20sliced/" target="_blank" rel="noopener">Pexels</a>
+      <a class="lnk lnk-2" href="https://unsplash.com/s/photos/banana-bread" target="_blank" rel="noopener">Unsplash</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <div class="row-name">Italian &amp; Herb</div>
+      <div class="row-terms">Searching: <strong>rosemary herb bread loaf</strong></div>
+    </div>
+    <div class="row-links">
+      <a class="lnk" href="https://www.pexels.com/search/rosemary%20herb%20bread/" target="_blank" rel="noopener">Pexels</a>
+      <a class="lnk lnk-2" href="https://unsplash.com/s/photos/herb-bread" target="_blank" rel="noopener">Unsplash</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <div class="row-name">Cinnamon &amp; Raisin Bread</div>
+      <div class="row-terms">Searching: <strong>cinnamon raisin swirl bread</strong></div>
+    </div>
+    <div class="row-links">
+      <a class="lnk" href="https://www.pexels.com/search/cinnamon%20raisin%20bread/" target="_blank" rel="noopener">Pexels</a>
+      <a class="lnk lnk-2" href="https://unsplash.com/s/photos/cinnamon-raisin-bread" target="_blank" rel="noopener">Unsplash</a>
+    </div>
+  </div>
+
+  <h2 class="cat">Cookies <span>2 items</span></h2>
+
+  <div class="row">
+    <div>
+      <div class="row-name">Apple Caramel</div>
+      <div class="row-terms">Searching: <strong>caramel apple cookies</strong></div>
+    </div>
+    <div class="row-links">
+      <a class="lnk" href="https://www.pexels.com/search/caramel%20cookies/" target="_blank" rel="noopener">Pexels</a>
+      <a class="lnk lnk-2" href="https://unsplash.com/s/photos/caramel-cookies" target="_blank" rel="noopener">Unsplash</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <div class="row-name">Oatmeal Cream Pie</div>
+      <div class="row-terms">Searching: <strong>oatmeal cream sandwich cookies</strong></div>
+    </div>
+    <div class="row-links">
+      <a class="lnk" href="https://www.pexels.com/search/oatmeal%20cookies/" target="_blank" rel="noopener">Pexels</a>
+      <a class="lnk lnk-2" href="https://unsplash.com/s/photos/sandwich-cookie" target="_blank" rel="noopener">Unsplash</a>
+    </div>
+  </div>
+
+  <h2 class="cat">Rolls <span>5 items</span></h2>
+
+  <div class="row">
+    <div>
+      <div class="row-name">Strawberry</div>
+      <div class="row-terms">Searching: <strong>strawberry sweet rolls glazed</strong></div>
+    </div>
+    <div class="row-links">
+      <a class="lnk" href="https://www.pexels.com/search/strawberry%20sweet%20rolls/" target="_blank" rel="noopener">Pexels</a>
+      <a class="lnk lnk-2" href="https://unsplash.com/s/photos/strawberry-roll" target="_blank" rel="noopener">Unsplash</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <div class="row-name">Blueberry</div>
+      <div class="row-terms">Searching: <strong>blueberry sweet rolls</strong></div>
+    </div>
+    <div class="row-links">
+      <a class="lnk" href="https://www.pexels.com/search/blueberry%20rolls/" target="_blank" rel="noopener">Pexels</a>
+      <a class="lnk lnk-2" href="https://unsplash.com/s/photos/blueberry-pastry" target="_blank" rel="noopener">Unsplash</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <div class="row-name">Chocolate</div>
+      <div class="row-terms">Searching: <strong>chocolate swirl rolls babka</strong></div>
+    </div>
+    <div class="row-links">
+      <a class="lnk" href="https://www.pexels.com/search/chocolate%20rolls/" target="_blank" rel="noopener">Pexels</a>
+      <a class="lnk lnk-2" href="https://unsplash.com/s/photos/chocolate-babka" target="_blank" rel="noopener">Unsplash</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <div class="row-name">Carrot Cake</div>
+      <div class="row-terms">Searching: <strong>carrot cake rolls cream cheese icing</strong></div>
+    </div>
+    <div class="row-links">
+      <a class="lnk" href="https://www.pexels.com/search/carrot%20cake/" target="_blank" rel="noopener">Pexels</a>
+      <a class="lnk lnk-2" href="https://unsplash.com/s/photos/carrot-cake" target="_blank" rel="noopener">Unsplash</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <div class="row-name">Regular</div>
+      <div class="row-terms">Searching: <strong>cinnamon rolls in a pan with icing</strong></div>
+    </div>
+    <div class="row-links">
+      <a class="lnk" href="https://www.pexels.com/search/cinnamon%20rolls/" target="_blank" rel="noopener">Pexels</a>
+      <a class="lnk lnk-2" href="https://unsplash.com/s/photos/cinnamon-roll" target="_blank" rel="noopener">Unsplash</a>
+    </div>
+  </div>
+
+  <h2 class="cat">Sourdough <span>1 item</span></h2>
+
+  <div class="row">
+    <div>
+      <div class="row-name">Artisan</div>
+      <div class="row-terms">Searching: <strong>sourdough boule scored crust</strong></div>
+    </div>
+    <div class="row-links">
+      <a class="lnk" href="https://www.pexels.com/search/sourdough%20bread/" target="_blank" rel="noopener">Pexels</a>
+      <a class="lnk lnk-2" href="https://unsplash.com/s/photos/sourdough" target="_blank" rel="noopener">Unsplash</a>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: 28px;">
+    <h2>Photos for the website itself</h2>
+    <p style="margin: 0;">The pictures on your own pages, the big one on the home page and the one on About Us, are separate from your product photos. Those you drop straight onto the page through <a href="admin.html">the product manager</a>, and it sizes them for you. The same two libraries above work just as well for those.</p>
+  </div>
+</main>
+
+</body>
+</html>

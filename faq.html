@@ -84,7 +84,14 @@
         <span style="flex: 1;">How do I place an order?</span>
         <svg data-faq-plus width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--berry)" stroke-width="2.75" stroke-linecap="round" aria-hidden="true" style="flex: 0 0 auto;"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
       </summary>
-      <p style="font-family: var(--font-body); font-size: 16.5px; line-height: 1.7; color: var(--ink-soft); margin: 0 0 20px; max-width: 66ch;">Send us a message with what you would like, through Facebook, by email, or with the inquiry form on the <a href="contact.html">contact page</a>, ideally 5 to 7 days before you need it. We will reply about availability, price and pickup, and your order is set once we have both confirmed it. There is no online checkout.</p>
+      <div data-shop-open hidden>
+        <p style="font-family: var(--font-body); font-size: 16.5px; line-height: 1.7; color: var(--ink-soft); margin: 0 0 12px; max-width: 66ch;">Two ways. For anything we have ready, use our ordering page and pay in one go. That is the quickest route, and there is nothing to arrange afterwards.</p>
+        <p style="font-family: var(--font-body); font-size: 16.5px; line-height: 1.7; color: var(--ink-soft); margin: 0 0 12px; max-width: 66ch;">For a custom flavor, a large batch or something for a particular occasion, send us a message instead, through Facebook, by email, or with the inquiry form on the <a href="contact.html">contact page</a>, ideally 5 to 7 days before you need it. We will reply about availability and price, and your order is set once we have both confirmed it.</p>
+        <p style="margin: 0 0 20px;"><a class="btn" data-order-link href="#" style="white-space: nowrap; border: 1px solid var(--berry); color: var(--berry); font-family: var(--font-body); font-weight: 700; font-size: 15px; padding: 11px 22px;">Go to our ordering page</a></p>
+      </div>
+      <div data-shop-closed>
+        <p style="font-family: var(--font-body); font-size: 16.5px; line-height: 1.7; color: var(--ink-soft); margin: 0 0 20px; max-width: 66ch;">Send us a message with what you would like, through Facebook, by email, or with the inquiry form on the <a href="contact.html">contact page</a>, ideally 5 to 7 days before you need it. We will reply about availability, price and pickup, and your order is set once we have both confirmed it. Our online shop is opening soon, and ordering will be quicker still once it is.</p>
+      </div>
     </details>
 
     <details style="background: var(--sand); border-radius: 24px; padding: 4px clamp(18px, 2.4vw, 28px);">
@@ -108,7 +115,7 @@
         <span style="flex: 1;">Are products available every day?</span>
         <svg data-faq-plus width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--berry)" stroke-width="2.75" stroke-linecap="round" aria-hidden="true" style="flex: 0 0 auto;"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
       </summary>
-      <p style="font-family: var(--font-body); font-size: 16.5px; line-height: 1.7; color: var(--ink-soft); margin: 0 0 20px; max-width: 66ch;">No. This is a small kitchen, and nothing sits on a shelf waiting. We bake to order and make jams when the fruit is ready, which is why we ask for 5 to 7 days&rsquo; notice. Anything marked seasonal or coming soon is not being made right now.</p>
+      <p style="font-family: var(--font-body); font-size: 16.5px; line-height: 1.7; color: var(--ink-soft); margin: 0 0 20px; max-width: 66ch;">No. This is a small kitchen, and nothing sits on a shelf waiting. We bake to order, which is why we ask for 5 to 7 days&rsquo; notice. Anything marked seasonal or coming soon is not being made right now.</p>
     </details>
 
     <details style="background: var(--sand); border-radius: 24px; padding: 4px clamp(18px, 2.4vw, 28px);">
@@ -199,7 +206,7 @@
         <span style="font-family: var(--font-script); font-size: 38px; color: var(--blush-deep);">Sugarberry</span>
         <span style="font-family: var(--font-serif); font-size: 14px; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; color: var(--sage-soft); padding-left: 3px; margin-top: 4px;">Cottage</span>
       </div>
-      <p style="font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-neutral-100) 82%, transparent); max-width: 30ch; margin: 6px 0 0;">Small-batch jams, breads and sweet treats, baked at home and shared with our neighbors.</p>
+      <p style="font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-neutral-100) 82%, transparent); max-width: 30ch; margin: 6px 0 0;">Small-batch breads, rolls and sweet treats, baked at home and shared with our neighbors.</p>
     </div>
 
     <nav aria-label="Footer" style="display: flex; flex-direction: column; gap: 10px;">
@@ -243,6 +250,7 @@
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"></path><path d="M5 12l7-7 7 7"></path></svg>
 </button>
 
+<script src="products-data.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

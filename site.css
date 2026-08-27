@@ -132,9 +132,23 @@ a[data-current="page"] { color: var(--berry); font-weight: 700; }
   overflow: visible; clip-path: none; color: #fff;
 }
 
+/* ---------- 6a. FOOD PHOTOS --------------------------------------------
+   The design system softens every photograph so it settles into the warm
+   page, using .washed in theme.css. That suits a landscape or a room, but
+   it turns bread grey and makes frosting look dusty, so here it is dialled
+   right back: full colour with the faintest lift, which still sits on the
+   cream page without looking faded.
+
+   To go back to the design system's original softening, delete this rule.
+   To push the colour further, raise the saturate number a little.      */
+.washed {
+  filter: saturate(1.04) contrast(1.02) brightness(1.01);
+}
+
 /* ---------- 6b. PRODUCT FILTER BUTTONS --------------------------------- */
 [data-chip] {
   white-space: nowrap;
+  min-height: 44px;
   background: transparent;
   border: 1px solid currentColor;
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;

@@ -71,13 +71,14 @@
   <section style="max-width: 1240px; margin: 0 auto; padding: clamp(32px, 4.5vw, 64px) clamp(16px, 4vw, 44px) clamp(24px, 3vw, 40px);">
     <span style="display: block; font-family: var(--font-script); font-size: clamp(30px, 4vw, 40px); line-height: 1; color: var(--pink-ink);">nothing complicated</span>
     <h1 style="font-family: var(--font-serif); font-weight: 600; font-size: clamp(34px, 5vw, 54px); line-height: 1.08; margin: 8px 0 0;">How to order</h1>
-    <p style="font-family: var(--font-body); font-size: clamp(16px, 1.4vw, 18px); line-height: 1.65; color: var(--ink-soft); max-width: 62ch; margin: 14px 0 0;">Ordering from Sugarberry Cottage is a conversation. Tell us what you would like, we will tell you what is ready, and we will agree on the details before anything gets baked.</p>
+    <p data-shop-open hidden style="font-family: var(--font-body); font-size: clamp(16px, 1.4vw, 18px); line-height: 1.65; color: var(--ink-soft); max-width: 62ch; margin: 14px 0 0;">There are two ways to order. For anything we have ready, use our ordering page and pay in one go. For a custom flavor, a large batch, or something for an occasion, message us and we will work it out together.</p>
+    <p data-shop-closed style="font-family: var(--font-body); font-size: clamp(16px, 1.4vw, 18px); line-height: 1.65; color: var(--ink-soft); max-width: 62ch; margin: 14px 0 0;">Ordering from Sugarberry Cottage is a conversation. Tell us what you would like, we will tell you what is ready, and we will agree on the details before anything gets baked.</p>
 
     <div style="display: flex; align-items: flex-start; gap: 14px; margin: clamp(20px, 2.6vw, 30px) 0 0; padding: clamp(16px, 2vw, 22px) clamp(18px, 2.4vw, 26px); border-radius: 24px; background: var(--blush); border: 1px solid var(--blush-deep); max-width: 62ch;">
       <span aria-hidden="true" style="flex: 0 0 auto; color: var(--berry); margin-top: 2px;">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5V12l3 2"></path></svg>
       </span>
-      <p style="font-family: var(--font-body); font-size: clamp(15.5px, 1.3vw, 17px); line-height: 1.6; margin: 0;"><strong>Please order about a week ahead, 5 to 7 days&rsquo; notice.</strong> Everything is baked and cooked to order rather than kept in stock, so that week gives us time to get your order into the schedule.</p>
+      <p style="font-family: var(--font-body); font-size: clamp(15.5px, 1.3vw, 17px); line-height: 1.6; margin: 0;"><strong>Please allow about a week, 5 to 7 days&rsquo; notice.</strong> Everything is made especially for you rather than kept in stock, so that week gives us time to fit your order into the baking schedule.</p>
     </div>
   </section>
 
@@ -87,18 +88,30 @@
       <li style="display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(18px, 2.6vw, 32px); align-items: start; background: var(--sand); border-radius: 28px; padding: clamp(22px, 3vw, 34px);">
         <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: clamp(56px, 7vw, 70px); height: clamp(56px, 7vw, 70px); border-radius: 50%; background: var(--berry); color: #fff; font-family: var(--font-serif); font-weight: 600; font-size: clamp(26px, 3vw, 32px);">1</span>
         <div>
-          <h2 style="font-family: var(--font-serif); font-weight: 600; font-size: clamp(23px, 2.8vw, 30px); line-height: 1.15; margin: 4px 0 8px;">Browse the available products</h2>
-          <p style="font-family: var(--font-body); font-size: 16.5px; line-height: 1.65; color: var(--ink-soft); margin: 0 0 12px; max-width: 62ch;">Have a look through the shelf and note anything you would like. Each product shows its price and whether it is available, seasonal, sold out or coming soon.</p>
-          <a href="products.html" style="font-family: var(--font-body); font-size: 16px; font-weight: 600;">See our products &rarr;</a>
+          <div data-shop-open hidden>
+            <h2 style="font-family: var(--font-serif); font-weight: 600; font-size: clamp(23px, 2.8vw, 30px); line-height: 1.15; margin: 4px 0 8px;">Place your order</h2>
+            <p style="font-family: var(--font-body); font-size: 16.5px; line-height: 1.65; color: var(--ink-soft); margin: 0 0 14px; max-width: 62ch;">Our ordering page is where you place and pay for an order. Look through the products first, then head over when you know what you would like. This is the quickest way to order.</p>
+            <a class="btn" data-order-link href="#" style="white-space: nowrap; background: var(--berry); color: #fff; font-family: var(--font-body); font-weight: 700; font-size: 16px; padding: 14px 26px; gap: 9px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h12l1.5 5.5H4.5z"></path><path d="M5 8v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8"></path><path d="M9.5 12.5h5"></path></svg>
+              Go to our ordering page
+            </a>
+            <p data-order-note style="font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: var(--ink-soft); margin: 10px 0 0;">Opens our ordering page in a new tab.</p>
+          </div>
+
+          <div data-shop-closed>
+            <h2 style="font-family: var(--font-serif); font-weight: 600; font-size: clamp(23px, 2.8vw, 30px); line-height: 1.15; margin: 4px 0 8px;">Have a look at what we make</h2>
+            <p style="font-family: var(--font-body); font-size: 16.5px; line-height: 1.65; color: var(--ink-soft); margin: 0 0 12px; max-width: 62ch;">Our online shop is opening soon. Until then, every order is arranged with us directly, which suits us fine. Have a think about what you would like and roughly when you need it.</p>
+            <a href="products.html" style="font-family: var(--font-body); font-size: 16px; font-weight: 600;">See what we make &rarr;</a>
+          </div>
         </div>
       </li>
 
       <li style="display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(18px, 2.6vw, 32px); align-items: start; background: var(--sand); border-radius: 28px; padding: clamp(22px, 3vw, 34px);">
         <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: clamp(56px, 7vw, 70px); height: clamp(56px, 7vw, 70px); border-radius: 50%; background: var(--berry); color: #fff; font-family: var(--font-serif); font-weight: 600; font-size: clamp(26px, 3vw, 32px);">2</span>
         <div>
-          <h2 style="font-family: var(--font-serif); font-weight: 600; font-size: clamp(23px, 2.8vw, 30px); line-height: 1.15; margin: 4px 0 8px;">Contact Sugarberry Cottage</h2>
-          <p style="font-family: var(--font-body); font-size: 16.5px; line-height: 1.65; color: var(--ink-soft); margin: 0 0 12px; max-width: 62ch;">Send us a message on <a href="https://www.facebook.com/profile.php?id=61593085433733" target="_blank" rel="noopener">Facebook</a>, by email or phone, or through the inquiry form on the contact page, 5 to 7 days before you need your order. Tell us what you are interested in, how much, and roughly when you would like it.</p>
-          <a href="contact.html" style="font-family: var(--font-body); font-size: 16px; font-weight: 600;">Go to the contact page &rarr;</a>
+          <h2 data-shop-open hidden style="font-family: var(--font-serif); font-weight: 600; font-size: clamp(23px, 2.8vw, 30px); line-height: 1.15; margin: 4px 0 8px;">Or message us for something custom</h2>
+          <h2 data-shop-closed style="font-family: var(--font-serif); font-weight: 600; font-size: clamp(23px, 2.8vw, 30px); line-height: 1.15; margin: 4px 0 8px;">Get in touch</h2>
+          <p style="font-family: var(--font-body); font-size: 16.5px; line-height: 1.65; color: var(--ink-soft); margin: 0 0 12px; max-width: 62ch;">Send us a message on <a href="https://www.facebook.com/profile.php?id=61593085433733" target="_blank" rel="noopener">Facebook</a>, by email or phone, or through the inquiry form on the contact page, 5 to 7 days before you need your order. Tell us what you are interested in, how much, and roughly when you would like it.</p>          <a href="contact.html" style="font-family: var(--font-body); font-size: 16px; font-weight: 600;">Go to the contact page &rarr;</a>
         </div>
       </li>
 
@@ -137,8 +150,9 @@
 
       <div style="background: var(--cream); border: 1px solid var(--blush-deep); border-radius: 28px; padding: clamp(22px, 2.8vw, 32px); display: flex; flex-direction: column; gap: 10px; align-items: flex-start;">
         <span class="tag tag-neutral" style="font-family: var(--font-body); font-weight: 600;">Payment</span>
-        <h2 style="font-family: var(--font-serif); font-weight: 600; font-size: 24px; margin: 0;">Paid at pickup</h2>
-        <p style="font-family: var(--font-body); font-size: 15.5px; line-height: 1.65; color: var(--ink-soft); margin: 0;">There is no online checkout on this website. Payment is arranged directly with us and settled at pickup. We will agree the method when we confirm your order. Online payment could be added later if it is ever needed.</p>
+        <h2 style="font-family: var(--font-serif); font-weight: 600; font-size: 24px; margin: 0;">How payment works</h2>
+        <p data-shop-open hidden style="font-family: var(--font-body); font-size: 15.5px; line-height: 1.65; color: var(--ink-soft); margin: 0;">Orders placed on our ordering page are paid for there when you order. For custom or larger orders arranged with us directly, payment is settled at pickup and we will agree the method when we confirm your order.</p>
+        <p data-shop-closed style="font-family: var(--font-body); font-size: 15.5px; line-height: 1.65; color: var(--ink-soft); margin: 0;">Payment is arranged directly with us and settled at pickup. We will agree the method when we confirm your order.</p>
       </div>
 
       <div style="background: var(--cream); border: 1px solid var(--blush-deep); border-radius: 28px; padding: clamp(22px, 2.8vw, 32px); display: flex; flex-direction: column; gap: 10px; align-items: flex-start;">
@@ -170,7 +184,7 @@
         <span style="font-family: var(--font-script); font-size: 38px; color: var(--blush-deep);">Sugarberry</span>
         <span style="font-family: var(--font-serif); font-size: 14px; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; color: var(--sage-soft); padding-left: 3px; margin-top: 4px;">Cottage</span>
       </div>
-      <p style="font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-neutral-100) 82%, transparent); max-width: 30ch; margin: 6px 0 0;">Small-batch jams, breads and sweet treats, baked at home and shared with our neighbors.</p>
+      <p style="font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-neutral-100) 82%, transparent); max-width: 30ch; margin: 6px 0 0;">Small-batch breads, rolls and sweet treats, baked at home and shared with our neighbors.</p>
     </div>
 
     <nav aria-label="Footer" style="display: flex; flex-direction: column; gap: 10px;">
@@ -214,6 +228,7 @@
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"></path><path d="M5 12l7-7 7 7"></path></svg>
 </button>
 
+<script src="products-data.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
