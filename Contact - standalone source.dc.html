@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<template id="__bundler_thumbnail" data-bg-color="#f5ead8">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#f5ead8"/>
+    <circle cx="600" cy="330" r="215" fill="#e8d4cf"/>
+    <rect x="470" y="255" width="260" height="300" rx="34" fill="#8f2438"/>
+    <rect x="505" y="205" width="190" height="66" rx="24" fill="#7a8a5e"/>
+    <circle cx="560" cy="390" r="30" fill="#f5ead8"/>
+    <circle cx="640" cy="440" r="22" fill="#f5ead8"/>
+    <circle cx="605" cy="345" r="16" fill="#f5ead8"/>
+    <rect x="380" y="640" width="440" height="26" rx="13" fill="#8f2438"/>
+    <rect x="455" y="700" width="290" height="20" rx="10" fill="#c2a68f"/>
+  </svg>
+</template>
+<title>Contact &amp; Order Enquiry — Sugarberry Cottage</title>
+<meta name="description" content="Send an order enquiry to Sugarberry Cottage, or find our Facebook page, email, pickup area and hours.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact &amp; Order Enquiry — Sugarberry Cottage">
+<meta property="og:description" content="Tell us what you would like and when you need it, and we will confirm what is available.">
+<link rel="icon" href="images/logo-mark.png">
+<link rel="stylesheet" href="_ds/organic-4399c03a-9f4b-4984-9910-2abd12203abd/styles.css">
+<script src="_ds/organic-4399c03a-9f4b-4984-9910-2abd12203abd/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Parisienne&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
+<link rel="stylesheet" href="site.css">
+</helmet>
+
+
+<div style="position: sticky; top: 0; z-index: 60;">
+
+  <a href="#main" style="position: absolute; left: 12px; top: 6px; transform: translateY(-160%); background: var(--berry); color: #fff; padding: 8px 16px; border-radius: 999px; font-family: var(--font-body); font-size: 14px; text-decoration: none; z-index: 5;" style-focus="{{ navSkipFocus }}">Skip to content</a>
+
+  <!-- SEASONAL ANNOUNCEMENT — edit this one line whenever the season changes -->
+  <div style="background: var(--berry); color: var(--color-bg); text-align: center; padding: 8px 18px; font-family: var(--font-body); font-size: 14px; line-height: 1.4;">
+    <strong style="font-weight: 700;">Now in season:</strong> peach preserves and apricot jelly &mdash; while the fruit lasts.
+  </div>
+
+  <header style="background: color-mix(in srgb, var(--cream) 94%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--hairline);">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 10px clamp(16px, 4vw, 44px); display: flex; align-items: center; gap: clamp(12px, 2vw, 28px);">
+
+      <a href="Sugarberry%20Cottage.dc.html" style="display: block; flex: 0 0 auto; line-height: 0;">
+        <img src="images/logo-horizontal.png" alt="Sugarberry Cottage — home" style="height: clamp(34px, 5.2vw, 56px); width: auto; display: block;">
+      </a>
+
+      <nav aria-label="Main" data-nav-links style="margin-left: auto; align-items: center; gap: clamp(14px, 1.9vw, 30px); font-family: var(--font-body); font-size: 15px; white-space: nowrap;">
+        <a href="Sugarberry%20Cottage.dc.html" data-current="{{ navCurHome }}" style="color: var(--ink); text-decoration: none; padding: 6px 0;" style-hover="{{ navLinkHover }}">Home</a>
+        <a href="Products.dc.html" data-current="{{ navCurProducts }}" style="color: var(--ink); text-decoration: none; padding: 6px 0;" style-hover="{{ navLinkHover }}">Our Products</a>
+        <a href="About.dc.html" data-current="{{ navCurAbout }}" style="color: var(--ink); text-decoration: none; padding: 6px 0;" style-hover="{{ navLinkHover }}">About Us</a>
+        <a href="Order.dc.html" data-current="{{ navCurOrder }}" style="color: var(--ink); text-decoration: none; padding: 6px 0;" style-hover="{{ navLinkHover }}">How to Order</a>
+        <a href="FAQ.dc.html" data-current="{{ navCurFaq }}" style="color: var(--ink); text-decoration: none; padding: 6px 0;" style-hover="{{ navLinkHover }}">FAQ</a>
+        <a href="Contact.dc.html" data-current="{{ navCurContact }}" style="color: var(--ink); text-decoration: none; padding: 6px 0;" style-hover="{{ navLinkHover }}">Contact</a>
+      </nav>
+
+      <a class="btn" href="Order.dc.html" data-nav-cta style="background: var(--berry); color: #fff; font-family: var(--font-body); font-weight: 700; font-size: 14px; padding: 11px 20px; white-space: nowrap; flex: 0 0 auto;" style-hover="{{ navCtaHover }}">Order Now</a>
+
+      <button type="button" data-nav-toggle aria-controls="cottage-menu" aria-expanded="{{ navExpanded }}" onClick="{{ navToggle }}" style="margin-left: auto; width: 46px; height: 46px; align-items: center; justify-content: center; background: transparent; border: 1px solid var(--hairline); border-radius: 999px; color: var(--berry); cursor: pointer; flex: 0 0 auto;">
+        <span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%);">Menu</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path></svg>
+      </button>
+    </div>
+
+    <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+      <nav id="cottage-menu" aria-label="Main" style="border-top: 1px solid var(--hairline); background: var(--cream); padding: 10px clamp(16px, 4vw, 44px) 18px; display: flex; flex-direction: column; font-family: var(--font-body); font-size: 17px;">
+        <a href="Sugarberry%20Cottage.dc.html" onClick="{{ navClose }}" style="color: var(--ink); text-decoration: none; padding: 13px 4px; border-bottom: 1px solid var(--hairline);">Home</a>
+        <a href="Products.dc.html" onClick="{{ navClose }}" style="color: var(--ink); text-decoration: none; padding: 13px 4px; border-bottom: 1px solid var(--hairline);">Our Products</a>
+        <a href="About.dc.html" onClick="{{ navClose }}" style="color: var(--ink); text-decoration: none; padding: 13px 4px; border-bottom: 1px solid var(--hairline);">About Us</a>
+        <a href="Order.dc.html" onClick="{{ navClose }}" style="color: var(--ink); text-decoration: none; padding: 13px 4px; border-bottom: 1px solid var(--hairline);">How to Order</a>
+        <a href="FAQ.dc.html" onClick="{{ navClose }}" style="color: var(--ink); text-decoration: none; padding: 13px 4px; border-bottom: 1px solid var(--hairline);">FAQ</a>
+        <a href="Contact.dc.html" onClick="{{ navClose }}" style="color: var(--ink); text-decoration: none; padding: 13px 4px;">Contact</a>
+        <a class="btn" href="Order.dc.html" onClick="{{ navClose }}" style="background: var(--berry); color: #fff; font-family: var(--font-body); font-weight: 700; font-size: 15px; padding: 13px 22px; margin-top: 12px; align-self: flex-start;">Order Now</a>
+      </nav>
+    </sc-if>
+  </header>
+</div>
+
+<main id="main">
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: clamp(32px, 4.5vw, 64px) clamp(16px, 4vw, 44px) clamp(24px, 3vw, 36px);">
+    <span style="display: block; font-family: var(--font-script); font-size: clamp(30px, 4vw, 40px); line-height: 1; color: var(--pink-ink);">say hello</span>
+    <h1 style="font-family: var(--font-serif); font-weight: 600; font-size: clamp(34px, 5vw, 54px); line-height: 1.08; margin: 8px 0 0;">Get in touch</h1>
+    <p style="font-family: var(--font-body); font-size: clamp(16px, 1.4vw, 18px); line-height: 1.65; color: var(--ink-soft); max-width: 62ch; margin: 14px 0 0;">Tell us what you are interested in and when you would like it. We will write back about what is available that week, the price, and where to collect.</p>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 44px) clamp(44px, 6vw, 80px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(24px, 3vw, 44px); align-items: start;">
+
+    <!-- ══ ENQUIRY FORM ═════════════════════════════════════════════════ -->
+    <form novalidate onSubmit="{{ onSubmit }}" style="background: var(--sand); border-radius: 28px; padding: clamp(22px, 3vw, 34px); display: flex; flex-direction: column; gap: 16px;">
+      <h2 style="font-family: var(--font-serif); font-weight: 600; font-size: clamp(24px, 2.8vw, 30px); margin: 0;">Order enquiry</h2>
+      <p style="font-family: var(--font-body); font-size: 15px; line-height: 1.6; color: var(--ink-soft); margin: 0;">This form does not send anything on its own. When you press the button it opens your own email program with the message written out, ready for you to send.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 14px;">
+        <div class="field">
+          <label for="cf-name" style="font-family: var(--font-body); font-size: 13.5px; font-weight: 600;">Your name <span style="color: var(--berry);">*</span></label>
+          <input class="input" id="cf-name" name="name" type="text" required autocomplete="name" style="font-family: var(--font-body); font-size: 16px; min-height: 46px;">
+        </div>
+        <div class="field">
+          <label for="cf-contact" style="font-family: var(--font-body); font-size: 13.5px; font-weight: 600;">Email or phone <span style="color: var(--berry);">*</span></label>
+          <input class="input" id="cf-contact" name="contact" type="text" required autocomplete="email" style="font-family: var(--font-body); font-size: 16px; min-height: 46px;">
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 14px;">
+        <div class="field">
+          <label for="cf-product" style="font-family: var(--font-body); font-size: 13.5px; font-weight: 600;">Product you are interested in <span style="color: var(--berry);">*</span></label>
+          <input class="input" id="cf-product" name="product" type="text" required ref="{{ productRef }}" placeholder="e.g. Strawberry Jam" style="font-family: var(--font-body); font-size: 16px; min-height: 46px;">
+        </div>
+        <div class="field">
+          <label for="cf-qty" style="font-family: var(--font-body); font-size: 13.5px; font-weight: 600;">Quantity <span style="color: var(--berry);">*</span></label>
+          <input class="input" id="cf-qty" name="qty" type="number" min="1" step="1" required inputmode="numeric" placeholder="1" style="font-family: var(--font-body); font-size: 16px; min-height: 46px;">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="cf-date" style="font-family: var(--font-body); font-size: 13.5px; font-weight: 600;">Preferred pickup date</label>
+        <input class="input" id="cf-date" name="date" type="date" style="font-family: var(--font-body); font-size: 16px; min-height: 46px;">
+      </div>
+
+      <div class="field">
+        <label for="cf-message" style="font-family: var(--font-body); font-size: 13.5px; font-weight: 600;">Message</label>
+        <textarea class="input" id="cf-message" name="message" rows="4" placeholder="Anything else we should know?" style="font-family: var(--font-body); font-size: 16px; border-radius: 20px; padding: 12px 16px;"></textarea>
+      </div>
+
+      <sc-if value="{{ hasErrors }}" hint-placeholder-val="{{ false }}">
+        <div role="alert" style="background: color-mix(in srgb, var(--berry) 10%, transparent); border: 1px solid var(--berry); border-radius: 20px; padding: 14px 18px; font-family: var(--font-body); font-size: 15px; line-height: 1.55; color: var(--berry-deep);">{{ errorText }}</div>
+      </sc-if>
+
+      <button type="submit" class="btn" style="white-space: nowrap; align-self: flex-start; background: var(--berry); color: #fff; border: none; font-family: var(--font-body); font-weight: 700; font-size: 16px; padding: 14px 28px; cursor: pointer;" style-hover="{{ primaryHover }}">Open my email with this enquiry</button>
+
+      <sc-if value="{{ opened }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="background: var(--color-accent-2-100); border: 1px solid var(--sage); border-radius: 20px; padding: 16px 18px; display: flex; flex-direction: column; gap: 12px;">
+          <p style="font-family: var(--font-body); font-size: 15px; line-height: 1.6; margin: 0;">Your email program should have opened with this message ready. <strong>Nothing has been sent to us yet</strong> &mdash; please press send there.</p>
+          <p style="font-family: var(--font-body); font-size: 15px; line-height: 1.6; margin: 0;">If nothing opened, copy the message below and email it to {{ orderEmail }} yourself.</p>
+          <textarea readonly rows="9" ref="{{ draftRef }}" aria-label="Your enquiry, ready to copy" style="width: 100%; box-sizing: border-box; font-family: var(--font-body); font-size: 14.5px; line-height: 1.55; color: var(--ink); background: var(--cream); border: 1px solid var(--sage); border-radius: 18px; padding: 12px 16px; resize: vertical;">{{ draft }}</textarea>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <button type="button" onClick="{{ copyDraft }}" style="white-space: nowrap; font-family: var(--font-body); font-size: 15px; font-weight: 700; padding: 11px 20px; border-radius: 999px; border: 1px solid var(--color-accent-2-700); background: transparent; color: var(--color-accent-2-700); cursor: pointer;" style-hover="{{ sageHover }}">{{ copyLabel }}</button>
+            <a class="btn" href="{{ mailtoHref }}" style="white-space: nowrap; border: 1px solid var(--color-accent-2-700); color: var(--color-accent-2-700); font-family: var(--font-body); font-weight: 700; font-size: 15px; padding: 11px 20px;" style-hover="{{ sageHover }}">Try my email app again</a>
+            <a class="btn" href="{{ gmailHref }}" target="_blank" rel="noopener" onClick="{{ openGmail }}" style="white-space: nowrap; border: 1px solid var(--color-accent-2-700); color: var(--color-accent-2-700); font-family: var(--font-body); font-weight: 700; font-size: 15px; padding: 11px 20px;" style-hover="{{ sageHover }}">Open in Gmail</a>
+          </div>
+        </div>
+      </sc-if>
+
+      <p style="font-family: var(--font-body); font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); margin: 0;">Fields marked <span style="color: var(--berry);">*</span> are required. We only use your details to arrange your order.</p>
+    </form>
+
+    <!-- ══ CONTACT DETAILS — replace every dotted placeholder ═══════════ -->
+    <div id="find-us" style="display: flex; flex-direction: column; gap: 18px;">
+      <div style="background: var(--blush); border-radius: 28px; padding: clamp(22px, 3vw, 34px); display: flex; flex-direction: column; gap: 16px;">
+        <h2 style="font-family: var(--font-serif); font-weight: 600; font-size: clamp(24px, 2.8vw, 30px); margin: 0;">Where to find us</h2>
+
+        <div style="display: flex; flex-direction: column; gap: 14px; font-family: var(--font-body); font-size: 16px;">
+          <div style="display: grid; grid-template-columns: 118px minmax(0, 1fr); gap: 6px 12px;">
+            <span style="font-weight: 700;">Facebook</span>
+            <span title="Replace with your Facebook page address, then link it" style="border-bottom: 1px dashed var(--pink);">facebook.com/your-page</span>
+            <span style="font-weight: 700;">Email</span>
+            <span title="Replace with your email address" style="border-bottom: 1px dashed var(--pink);">your-email@example.com</span>
+            <span style="font-weight: 700;">Phone</span>
+            <span title="Optional — delete this row if you would rather not list a number" style="border-bottom: 1px dashed var(--pink);">optional</span>
+            <span style="font-weight: 700;">Pickup area</span>
+            <span title="Replace with your pickup town or area" style="border-bottom: 1px dashed var(--pink);">your town or area</span>
+            <span style="font-weight: 700;">Hours</span>
+            <span title="Replace with the hours you answer messages or do pickups" style="border-bottom: 1px dashed var(--pink);">your hours</span>
+          </div>
+          <p style="margin: 0; line-height: 1.65; color: var(--ink-soft);">The quickest way to reach us is <span title="Replace with however you prefer to be contacted" style="border-bottom: 1px dashed var(--pink);">your preferred method</span>. We answer messages as soon as we are out of the kitchen.</p>
+        </div>
+      </div>
+
+      <div style="border: 1px solid var(--blush-deep); border-radius: 28px; padding: clamp(20px, 2.6vw, 30px); display: flex; flex-direction: column; gap: 10px;">
+        <h2 style="font-family: var(--font-serif); font-weight: 600; font-size: 22px; margin: 0;">Before you order</h2>
+        <p style="font-family: var(--font-body); font-size: 15.5px; line-height: 1.65; color: var(--ink-soft); margin: 0;">Products and availability change with the season. Nothing is confirmed until we reply, so please wait to hear from us before planning around an order.</p>
+        <p style="font-family: var(--font-body); font-size: 15.5px; line-height: 1.65; color: var(--ink-soft); margin: 0;">If you have a food allergy, tell us in your message &mdash; see our <a href="FAQ.dc.html#allergens">ingredient and allergen notice</a>.</p>
+      </div>
+
+      <div style="border: 1px solid var(--sage); background: var(--color-accent-2-100); border-radius: 28px; padding: clamp(20px, 2.6vw, 30px); display: flex; flex-direction: column; gap: 8px;">
+        <h2 style="font-family: var(--font-serif); font-weight: 600; font-size: 22px; margin: 0;">Owner note</h2>
+        <p style="font-family: var(--font-body); font-size: 15px; line-height: 1.65; color: var(--ink-soft); margin: 0;">The enquiry form writes an email to the address set at the top of this page&rsquo;s script &mdash; change <strong>orderEmail</strong> there to your own address so enquiries reach you. Everything with a dotted underline on this page is a placeholder for you to replace.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer style="background: var(--color-accent-2-800); color: var(--color-neutral-100); font-family: var(--font-body); padding: clamp(40px, 6vw, 72px) clamp(16px, 4vw, 44px) 28px; margin-top: clamp(48px, 7vw, 96px);">
+  <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: clamp(28px, 4vw, 56px);">
+
+    <div style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start;">
+      <img src="images/logo-mark.png" alt="" style="height: 76px; width: auto; display: block;">
+      <div style="display: flex; flex-direction: column; line-height: 1;">
+        <span style="font-family: var(--font-script); font-size: 38px; color: var(--blush-deep);">Sugarberry</span>
+        <span style="font-family: var(--font-serif); font-size: 14px; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; color: var(--sage-soft); padding-left: 3px; margin-top: 4px;">Cottage</span>
+      </div>
+      <p style="font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-neutral-100) 82%, transparent); max-width: 30ch; margin: 6px 0 0;">Small-batch jams, breads and sweet treats, baked at home and shared with our neighbours.</p>
+    </div>
+
+    <nav aria-label="Footer" style="display: flex; flex-direction: column; gap: 10px;">
+      <h2 style="font-family: var(--font-serif); font-weight: 600; font-size: 19px; letter-spacing: 0.02em; margin: 0 0 6px; color: var(--blush);">Explore</h2>
+      <a href="Sugarberry%20Cottage.dc.html" style="color: inherit; font-size: 15px; text-decoration: none;" style-hover="{{ footLightHover }}">Home</a>
+      <a href="Products.dc.html" style="color: inherit; font-size: 15px; text-decoration: none;" style-hover="{{ footLightHover }}">Our Products</a>
+      <a href="About.dc.html" style="color: inherit; font-size: 15px; text-decoration: none;" style-hover="{{ footLightHover }}">About Us</a>
+      <a href="Order.dc.html" style="color: inherit; font-size: 15px; text-decoration: none;" style-hover="{{ footLightHover }}">How to Order</a>
+      <a href="FAQ.dc.html" style="color: inherit; font-size: 15px; text-decoration: none;" style-hover="{{ footLightHover }}">FAQ</a>
+      <a href="Contact.dc.html" style="color: inherit; font-size: 15px; text-decoration: none;" style-hover="{{ footLightHover }}">Contact</a>
+    </nav>
+
+    <!-- CONTACT DETAILS — replace each dotted placeholder with your own -->
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <h2 style="font-family: var(--font-serif); font-weight: 600; font-size: 19px; letter-spacing: 0.02em; margin: 0 0 6px; color: var(--blush);">Get in touch</h2>
+      <span style="font-size: 15px;">Facebook: <span title="Replace with your Facebook page address" style="border-bottom: 1px dashed var(--sage-soft); color: var(--blush-deep);">facebook.com/your-page</span></span>
+      <span style="font-size: 15px;">Email: <span title="Replace with your email address" style="border-bottom: 1px dashed var(--sage-soft); color: var(--blush-deep);">your-email@example.com</span></span>
+      <span style="font-size: 15px;">Phone: <span title="Optional — delete this line if you would rather not list a phone number" style="border-bottom: 1px dashed var(--sage-soft); color: var(--blush-deep);">optional</span></span>
+      <span style="font-size: 15px;">Pickup: <span title="Replace with your pickup town or area" style="border-bottom: 1px dashed var(--sage-soft); color: var(--blush-deep);">your town or area</span></span>
+      <a href="Contact.dc.html" style="color: var(--blush-deep); font-size: 15px; margin-top: 4px;">Send an order enquiry &rarr;</a>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <h2 style="font-family: var(--font-serif); font-weight: 600; font-size: 19px; letter-spacing: 0.02em; margin: 0 0 6px; color: var(--blush);">Good to know</h2>
+      <a href="FAQ.dc.html#cottage-food" style="color: inherit; font-size: 15px; text-decoration: none;" style-hover="{{ footLightHover }}">Cottage food notice</a>
+      <a href="FAQ.dc.html#allergens" style="color: inherit; font-size: 15px; text-decoration: none;" style-hover="{{ footLightHover }}">Ingredients &amp; allergens</a>
+      <a href="FAQ.dc.html#privacy" style="color: inherit; font-size: 15px; text-decoration: none;" style-hover="{{ footLightHover }}">Privacy notice</a>
+      <p style="font-size: 14px; line-height: 1.55; color: color-mix(in srgb, var(--color-neutral-100) 72%, transparent); margin: 6px 0 0;">Products and availability change with the seasons and with what is fresh that week.</p>
+    </div>
+  </div>
+
+  <div style="max-width: 1240px; margin: clamp(28px, 4vw, 48px) auto 0; padding-top: 20px; border-top: 1px solid color-mix(in srgb, var(--color-neutral-100) 22%, transparent); display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; font-size: 14px; color: color-mix(in srgb, var(--color-neutral-100) 76%, transparent);">
+    <span>&copy; {{ footYear }} Sugarberry Cottage</span>
+    <span style="opacity: 0.8;">Dotted text marks details for the owner to fill in.</span>
+  </div>
+</footer>
+
+<sc-if value="{{ footShowTop }}" hint-placeholder-val="{{ false }}">
+  <button type="button" onClick="{{ footToTop }}" data-noprint aria-label="Back to top" style="position: fixed; right: clamp(14px, 3vw, 30px); bottom: clamp(14px, 3vw, 30px); width: 50px; height: 50px; display: inline-flex; align-items: center; justify-content: center; border: none; border-radius: 999px; background: var(--berry); color: #fff; box-shadow: var(--shadow-md); cursor: pointer; z-index: 70;" style-hover="{{ footTopHover }}">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"></path><path d="M5 12l7-7 7 7"></path></svg>
+  </button>
+</sc-if>
+
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+
+  /* ══ WHERE ENQUIRIES GO ══════════════════════════════════════════════
+     Change this to your own email address. The form opens the visitor's
+     email program with a message addressed here.                       */
+  orderEmail = 'your-email@example.com';
+
+  state = { errorText: '', opened: false, draft: '', subject: '', copied: false,
+            navOpen: false, showTop: false };
+
+  componentDidMount() {
+    // Back-to-top button (was the footer component before this page was flattened).
+    this._onScroll = () => {
+      const show = window.scrollY > 500;
+      if (show !== this.state.showTop) this.setState({ showTop: show });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+
+    // Product cards link here with ?product=Strawberry%20Jam — prefill it.
+    const wanted = new URLSearchParams(window.location.search).get('product');
+    if (wanted && this.productInput) this.productInput.value = wanted;
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll);
+  }
+
+  renderVals() {
+    const { draft, subject } = this.state;
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const q = encodeURIComponent;
+    const mailtoHref = 'mailto:' + this.orderEmail + '?subject=' + q(subject) + '&body=' + q(draft);
+    return {
+      // ── navigation bar ──────────────────────────────────────────────
+      navOpen: this.state.navOpen,
+      navExpanded: this.state.navOpen ? 'true' : 'false',
+      navToggle: () => this.setState((s) => ({ navOpen: !s.navOpen })),
+      navClose: () => this.setState({ navOpen: false }),
+      navLinkHover: { color: 'var(--berry)' },
+      navCtaHover: { background: 'var(--berry-deep)' },
+      navSkipFocus: { transform: 'translateY(0)' },
+      navCurHome: null, navCurProducts: null, navCurAbout: null,
+      navCurOrder: null, navCurFaq: null, navCurContact: 'page',
+      // ── footer ──────────────────────────────────────────────────────
+      footYear: new Date().getFullYear(),
+      footShowTop: this.state.showTop,
+      footToTop: () => window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' }),
+      footLightHover: { color: 'var(--blush-deep)' },
+      footTopHover: { background: 'var(--berry-deep)' },
+
+      productRef: (el) => { this.productInput = el; },
+      draftRef: (el) => { this.draftArea = el; },
+      hasErrors: !!this.state.errorText,
+      errorText: this.state.errorText,
+      opened: this.state.opened,
+      draft,
+      orderEmail: this.orderEmail,
+      mailtoHref,
+      // Webmail fallback for anyone with no email program set up on their computer.
+      gmailHref: 'https://mail.google.com/mail/?view=cm&fs=1&to=' + q(this.orderEmail) +
+        '&su=' + q(subject) + '&body=' + q(draft),
+      // Gmail refuses to load inside an embedded frame, so open a real tab.
+      openGmail: (e) => {
+        e.preventDefault();
+        const url = e.currentTarget.getAttribute('href');
+        const w = window.open(url, '_blank', 'noopener');
+        if (!w) window.location.href = url;
+      },
+      copyLabel: this.state.copied ? 'Copied' : 'Copy the message',
+      copyDraft: () => {
+        const done = () => {
+          this.setState({ copied: true });
+          setTimeout(() => this.setState({ copied: false }), 2500);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(draft).then(done, () => {
+            if (this.draftArea) { this.draftArea.select(); }
+          });
+        } else if (this.draftArea) {
+          this.draftArea.select();
+          document.execCommand('copy');
+          done();
+        }
+      },
+      sageHover: { background: 'color-mix(in srgb, var(--color-accent-2-700) 12%, transparent)' },
+      primaryHover: { background: 'var(--berry-deep)' },
+      onSubmit: (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const get = (n) => (form.elements[n].value || '').trim();
+        const name = get('name');
+        const contact = get('contact');
+        const product = get('product');
+        const qty = get('qty');
+        const date = get('date');
+        const message = get('message');
+
+        // ── Front-end validation ───────────────────────────────────────
+        const problems = [];
+        if (name.length < 2) problems.push('your name');
+        if (contact.length < 5) problems.push('an email address or phone number');
+        if (!product) problems.push('the product you are interested in');
+        if (!qty || Number(qty) < 1) problems.push('a quantity of at least 1');
+        if (problems.length) {
+          this.setState({
+            errorText: 'Please add ' + problems.join(', ') + '.',
+            opened: false
+          });
+          const firstBad = form.querySelector('input:invalid') || form.elements['name'];
+          if (firstBad && firstBad.focus) firstBad.focus();
+          return;
+        }
+
+        // ── Build the email and hand it to the visitor's email program ──
+        const subject = 'Order enquiry from ' + name + ' — Sugarberry Cottage';
+        const body = [
+          'Name: ' + name,
+          'Email or phone: ' + contact,
+          'Product: ' + product,
+          'Quantity: ' + qty,
+          'Preferred pickup date: ' + (date || 'no preference'),
+          '',
+          'Message:',
+          message || '(none)'
+        ].join('\n');
+
+        this.setState({ errorText: '', opened: true, draft: body, subject: subject, copied: false });
+
+        // Hand the message to the visitor's email program. Some browsers block
+        // this, which is why the panel below also offers copy and webmail.
+        const link = document.createElement('a');
+        link.href = 'mailto:' + this.orderEmail +
+          '?subject=' + encodeURIComponent(subject) +
+          '&body=' + encodeURIComponent(body);
+        link.rel = 'noopener';
+        document.body.appendChild(link);
+        try { link.click(); } catch (err) { /* fallback panel covers it */ }
+        link.remove();
+      }
+    };
+  }
+
+}
+</script>
+</body>
+</html>

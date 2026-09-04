@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Contact &amp; Order Inquiry | Sugarberry Cottage</title>
+<meta name="description" content="Send an order inquiry to Sugarberry Cottage, or reach us on Messenger, by email or by phone. Local pickup, or shipping within Illinois. Please allow 5 to 7 days.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact &amp; Order Inquiry | Sugarberry Cottage">
+<meta property="og:description" content="Tell us what you would like and when you need it, and we will confirm what is available.">
+<meta property="og:image" content="images/logo-full.png">
+<link rel="icon" href="images/logo-mark.png">
+<link rel="stylesheet" href="_ds/organic-4399c03a-9f4b-4984-9910-2abd12203abd/styles.css">
+<script src="_ds/organic-4399c03a-9f4b-4984-9910-2abd12203abd/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Parisienne&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;display=swap">
+<link rel="stylesheet" href="site.css">
+</helmet>
+
+<dc-import name="SiteNav" current="contact" hint-size="100%,140px"></dc-import>
+
+<main id="main">
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: clamp(32px, 4.5vw, 64px) clamp(16px, 4vw, 44px) clamp(24px, 3vw, 36px);">
+    <span style="display: block; font-family: var(--font-script); font-size: clamp(30px, 4vw, 40px); line-height: 1; color: var(--pink-ink);">say hello</span>
+    <h1 style="font-family: var(--font-serif); font-weight: 600; font-size: clamp(34px, 5vw, 54px); line-height: 1.08; margin: 8px 0 0;">Get in touch</h1>
+    <p style="font-family: var(--font-body); font-size: clamp(16px, 1.4vw, 18px); line-height: 1.65; color: var(--ink-soft); max-width: 62ch; margin: 14px 0 0;">Tell us what you are interested in and when you would like it. We will write back about what is available that week, the price, and where to collect.</p>
+  </section>
+
+  <section style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 44px) clamp(44px, 6vw, 80px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(24px, 3vw, 44px); align-items: start;">
+
+    <!-- ══ INQUIRY FORM ══════════════════════════════════════════════════ -->
+    <form novalidate="" onSubmit="{{ onSubmit }}" style="background: var(--sand); border-radius: 28px; padding: clamp(22px, 3vw, 34px); display: flex; flex-direction: column; gap: 16px;">
+      <h2 style="font-family: var(--font-serif); font-weight: 600; font-size: clamp(24px, 2.8vw, 30px); margin: 0;">Order inquiry</h2>
+      <p style="font-family: var(--font-body); font-size: 15px; line-height: 1.6; color: var(--ink-soft); margin: 0;">This form does not send anything on its own. When you press the button it opens your own email program with the message written out, ready for you to send.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 14px;">
+        <div class="field">
+          <label for="cf-name" style="font-family: var(--font-body); font-size: 13.5px; font-weight: 600;">Your name <span style="color: var(--berry);">*</span></label>
+          <input class="input" id="cf-name" name="name" type="text" required="" autocomplete="name" style="font-family: var(--font-body); font-size: 16px; min-height: 46px;">
+        </div>
+        <div class="field">
+          <label for="cf-contact" style="font-family: var(--font-body); font-size: 13.5px; font-weight: 600;">Email or phone <span style="color: var(--berry);">*</span></label>
+          <input class="input" id="cf-contact" name="contact" type="text" required="" autocomplete="email" style="font-family: var(--font-body); font-size: 16px; min-height: 46px;">
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 14px;">
+        <div class="field">
+          <label for="cf-product" style="font-family: var(--font-body); font-size: 13.5px; font-weight: 600;">Product you are interested in <span style="color: var(--berry);">*</span></label>
+          <input class="input" id="cf-product" name="product" type="text" required="" ref="{{ productRef }}" placeholder="e.g. Strawberry Jam" style="font-family: var(--font-body); font-size: 16px; min-height: 46px;">
+        </div>
+        <div class="field">
+          <label for="cf-qty" style="font-family: var(--font-body); font-size: 13.5px; font-weight: 600;">Quantity <span style="color: var(--berry);">*</span></label>
+          <input class="input" id="cf-qty" name="qty" type="number" min="1" step="1" required="" inputmode="numeric" placeholder="1" style="font-family: var(--font-body); font-size: 16px; min-height: 46px;">
+        </div>
+      </div>
+
+      <fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px;">
+        <legend style="font-family: var(--font-body); font-size: 13.5px; font-weight: 600; padding: 0;">How would you like it?</legend>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+          <label data-choice style="font-family: var(--font-body);">
+            <input type="radio" name="fulfilment" value="Local pickup" checked="{{ isPickup }}" onChange="{{ chooseFulfilment }}">
+            Local pickup
+          </label>
+          <sc-if value="{{ offerShipping }}" hint-placeholder-val="{{ true }}">
+            <label data-choice style="font-family: var(--font-body);">
+              <input type="radio" name="fulfilment" value="{{ shipValue }}" checked="{{ isShipping }}" onChange="{{ chooseFulfilment }}">
+              {{ shipLabel }}
+            </label>
+          </sc-if>
+        </div>
+        <sc-if value="{{ isShipping }}" hint-placeholder-val="{{ false }}">
+          <p style="font-family: var(--font-body); font-size: 13.5px; line-height: 1.55; color: var(--berry-deep); background: color-mix(in srgb, var(--berry) 8%, transparent); border-radius: 16px; padding: 10px 14px; margin: 0;">{{ shippingLimitNote }}</p>
+        </sc-if>
+      </fieldset>
+
+      <div class="field">
+        <label for="cf-date" style="font-family: var(--font-body); font-size: 13.5px; font-weight: 600;">Preferred date</label>
+        <span style="font-family: var(--font-body); font-size: 13.5px; line-height: 1.5; color: var(--ink-soft);">{{ leadTimeNote }}</span>
+        <input class="input" id="cf-date" name="date" type="date" ref="{{ dateRef }}" style="font-family: var(--font-body); font-size: 16px; min-height: 46px;">
+      </div>
+
+      <div class="field">
+        <label for="cf-message" style="font-family: var(--font-body); font-size: 13.5px; font-weight: 600;">Message</label>
+        <textarea class="input" id="cf-message" name="message" rows="4" placeholder="Anything else we should know?" style="font-family: var(--font-body); font-size: 16px; border-radius: 20px; padding: 12px 16px;"></textarea>
+      </div>
+
+      <sc-if value="{{ hasErrors }}" hint-placeholder-val="{{ false }}">
+        <div role="alert" style="background: color-mix(in srgb, var(--berry) 10%, transparent); border: 1px solid var(--berry); border-radius: 20px; padding: 14px 18px; font-family: var(--font-body); font-size: 15px; line-height: 1.55; color: var(--berry-deep);">{{ errorText }}</div>
+      </sc-if>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+        <button type="submit" class="btn" style="white-space: nowrap; background: var(--berry); color: #fff; border: none; font-family: var(--font-body); font-weight: 700; font-size: 16px; padding: 14px 24px; cursor: pointer;" style-hover="{{ primaryHover }}">Email this inquiry</button>
+        <!-- MESSENGER: m.me plus your Facebook page number. Change the number if your page changes. -->
+        <sc-if value="{{ showMessenger }}" hint-placeholder-val="{{ true }}">
+          <a class="btn" href="https://m.me/61593085433733" target="_blank" rel="noopener" style="white-space: nowrap; border: 1px solid var(--berry); color: var(--berry); font-family: var(--font-body); font-weight: 700; font-size: 16px; padding: 14px 24px; gap: 9px;" style-hover="{{ outlineHover }}">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9.6 9.6 0 0 1-2.8-.4L4 21l1.4-4a8.2 8.2 0 0 1-1.4-4.6C4 7.4 7.9 3.6 12.5 3.6S21 7 21 11.5Z"></path></svg>
+            Or use Messenger
+          </a>
+        </sc-if>
+      </div>
+      <sc-if value="{{ showMessenger }}" hint-placeholder-val="{{ true }}">
+        <p style="font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: var(--ink-soft); margin: 0;">Messenger opens a chat with us straight away, and we can answer you there. Often the quickest way to get a reply.</p>
+      </sc-if>
+
+      <sc-if value="{{ opened }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="background: var(--color-accent-2-100); border: 1px solid var(--sage); border-radius: 20px; padding: 16px 18px; display: flex; flex-direction: column; gap: 12px;">
+          <p style="font-family: var(--font-body); font-size: 15px; line-height: 1.6; margin: 0;">Your email program should have opened with this message ready. <strong>Nothing has been sent to us yet.</strong> Please press send there.</p>
+          <p style="font-family: var(--font-body); font-size: 15px; line-height: 1.6; margin: 0;">If nothing opened, copy the message below and email it to {{ orderEmail }} yourself.</p>
+          <textarea readOnly="{{ true }}" rows="9" value="{{ draft }}" ref="{{ draftRef }}" aria-label="Your inquiry, ready to copy" style="width: 100%; box-sizing: border-box; font-family: var(--font-body); font-size: 14.5px; line-height: 1.55; color: var(--ink); background: var(--cream); border: 1px solid var(--sage); border-radius: 18px; padding: 12px 16px; resize: vertical;"></textarea>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <button type="button" onClick="{{ copyDraft }}" style="white-space: nowrap; font-family: var(--font-body); font-size: 15px; font-weight: 700; padding: 11px 20px; border-radius: 999px; border: 1px solid var(--color-accent-2-700); background: transparent; color: var(--color-accent-2-700); cursor: pointer;" style-hover="{{ sageHover }}">{{ copyLabel }}</button>
+            <a class="btn" href="{{ mailtoHref }}" style="white-space: nowrap; border: 1px solid var(--color-accent-2-700); color: var(--color-accent-2-700); font-family: var(--font-body); font-weight: 700; font-size: 15px; padding: 11px 20px;" style-hover="{{ sageHover }}">Try my email app again</a>
+            <a class="btn" href="{{ gmailHref }}" target="_blank" rel="noopener" onClick="{{ openGmail }}" style="white-space: nowrap; border: 1px solid var(--color-accent-2-700); color: var(--color-accent-2-700); font-family: var(--font-body); font-weight: 700; font-size: 15px; padding: 11px 20px;" style-hover="{{ sageHover }}">Open in Gmail</a>
+          </div>
+        </div>
+      </sc-if>
+
+      <p style="font-family: var(--font-body); font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); margin: 0;">Fields marked <span style="color: var(--berry);">*</span> are required. We only use your details to arrange your order.</p>
+    </form>
+
+    <!-- ══ CONTACT DETAILS ═══════════════════════════════════════════════ -->
+    <div id="find-us" style="display: flex; flex-direction: column; gap: 18px;">
+      <div style="background: var(--blush); border-radius: 28px; padding: clamp(22px, 3vw, 34px); display: flex; flex-direction: column; gap: 16px;">
+        <h2 style="font-family: var(--font-serif); font-weight: 600; font-size: clamp(24px, 2.8vw, 30px); margin: 0;">Where to find us</h2>
+
+        <div style="display: flex; flex-direction: column; gap: 14px; font-family: var(--font-body); font-size: 16px;">
+          <div style="display: grid; grid-template-columns: 118px minmax(0, 1fr); gap: 6px 12px;">
+            <span style="font-weight: 700;">Facebook</span>
+            <a href="https://www.facebook.com/profile.php?id=61593085433733" target="_blank" rel="noopener">Sugarberry Cottage on Facebook</a>
+            <span style="font-weight: 700;">Phone</span>
+            <a href="tel:+12176490464">(217) 649-0464</a>
+            <span style="font-weight: 700;">Email</span>
+            <a href="mailto:cottagesugarberry@gmail.com">cottagesugarberry@gmail.com</a>
+            <span style="font-weight: 700;">Hours</span>
+            <span>9am – 5pm</span>
+          </div>
+          <p style="margin: 0; line-height: 1.65; color: var(--ink-soft);">The quickest way to reach us is Messenger on Facebook. We answer messages as soon as we are out of the kitchen.</p>
+        </div>
+      </div>
+
+      <sc-if value="{{ offerShipping }}" hint-placeholder-val="{{ true }}">
+        <div style="border: 1px solid var(--sage); background: var(--color-accent-2-100); border-radius: 28px; padding: clamp(20px, 2.6vw, 30px); display: flex; flex-direction: column; gap: 10px; align-items: flex-start;">
+          <span class="tag tag-accent-2" style="font-family: var(--font-body); font-weight: 600;">Shipping</span>
+          <h2 style="font-family: var(--font-serif); font-weight: 600; font-size: 22px; margin: 0;">{{ shippingHeading }}</h2>
+          <p style="font-family: var(--font-body); font-size: 15.5px; line-height: 1.65; color: var(--ink); margin: 0;">{{ shippingBody }}</p>
+
+        </div>
+      </sc-if>
+
+      <div style="border: 1px solid var(--blush-deep); border-radius: 28px; padding: clamp(20px, 2.6vw, 30px); display: flex; flex-direction: column; gap: 10px;">
+        <h2 style="font-family: var(--font-serif); font-weight: 600; font-size: 22px; margin: 0;">Before you order</h2>
+        <p style="font-family: var(--font-body); font-size: 15.5px; line-height: 1.65; color: var(--ink); margin: 0;"><strong>Please order about a week ahead, 5 to 7 days&rsquo; notice.</strong> Everything is made to order, so we need a little time to fit your order into the baking week.</p>
+        <p style="font-family: var(--font-body); font-size: 15.5px; line-height: 1.65; color: var(--ink-soft); margin: 0;">Products and availability change with the season. Nothing is confirmed until we reply, so please wait to hear from us before planning around an order.</p>
+        <p style="font-family: var(--font-body); font-size: 15.5px; line-height: 1.65; color: var(--ink-soft); margin: 0;">If you have a food allergy, tell us in your message. See our <a href="FAQ.dc.html#allergens">ingredient and allergen notice</a>.</p>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;orderEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;cottagesugarberry@gmail.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Ordering&quot;},&quot;leadTimeDays&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:5,&quot;min&quot;:1,&quot;max&quot;:21,&quot;step&quot;:1,&quot;unit&quot;:&quot; days&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Ordering&quot;},&quot;showMessenger&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Ordering&quot;},&quot;offerShipping&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Shipping&quot;},&quot;shippingState&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Illinois&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Shipping&quot;}}">
+class Component extends DCLogic {
+  /* ══ SETTINGS ════════════════════════════════════════════════════════
+     These five are also editable in the Tweaks panel:
+
+       orderEmail     where inquiries are addressed
+       leadTimeDays   how much notice you need; the date box refuses
+                      anything sooner
+       showMessenger  show or hide the Messenger button
+       offerShipping  show or hide everything about shipping
+       shippingState  the ONE state you may legally ship within
+     ═══════════════════════════════════════════════════════════════════ */
+  cfg() {
+    return {
+      orderEmail: this.props.orderEmail ?? 'cottagesugarberry@gmail.com',
+      leadTimeDays: Number(this.props.leadTimeDays ?? 5),
+      showMessenger: this.props.showMessenger ?? true,
+      offerShipping: this.props.offerShipping ?? true,
+      shippingState: this.props.shippingState ?? 'Illinois'
+    };
+  }
+
+  state = { errorText: '', opened: false, draft: '', subject: '', copied: false, shipping: false };
+
+  // Earliest date the form will accept, as YYYY-MM-DD.
+  earliestDate() {
+    const d = new Date();
+    d.setDate(d.getDate() + this.cfg().leadTimeDays);
+    return d.toISOString().slice(0, 10);
+  }
+
+  applyDateMin() {
+    if (this.dateInput) this.dateInput.min = this.earliestDate();
+  }
+
+  componentDidMount() {
+    // Product cards link here with ?product=Strawberry%20Jam, so prefill it.
+    const wanted = new URLSearchParams(window.location.search).get('product');
+    if (wanted && this.productInput) this.productInput.value = wanted;
+    this.applyDateMin();
+  }
+
+  componentDidUpdate() {
+    this.applyDateMin();
+    // If shipping is switched off while "shipped" was selected, fall back.
+    if (!this.cfg().offerShipping && this.state.shipping) this.setState({ shipping: false });
+  }
+
+  renderVals() {
+    const { draft, subject } = this.state;
+    const cfg = this.cfg();
+    const lead = cfg.leadTimeDays;
+    const shipping = cfg.offerShipping && this.state.shipping;
+    const q = encodeURIComponent;
+    const mailtoHref = 'mailto:' + cfg.orderEmail + '?subject=' + q(subject) + '&body=' + q(draft);
+    const prettyDate = (iso) =>
+      new Date(iso + 'T12:00:00').toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' });
+    return {
+      productRef: (el) => { this.productInput = el; },
+      dateRef: (el) => { this.dateInput = el; },
+      draftRef: (el) => { this.draftArea = el; },
+      hasErrors: !!this.state.errorText,
+      errorText: this.state.errorText,
+      opened: this.state.opened,
+      draft,
+      orderEmail: cfg.orderEmail,
+      showMessenger: cfg.showMessenger,
+      mailtoHref,
+
+      // ── pickup or shipping ──────────────────────────────────────────
+      offerShipping: cfg.offerShipping,
+      isPickup: !shipping,
+      isShipping: shipping,
+      shipValue: 'Shipped within ' + cfg.shippingState,
+      shipLabel: 'Shipped within ' + cfg.shippingState,
+      shippingHeading: 'We ship within ' + cfg.shippingState,
+      shippingBody: 'Yes, we can ship your order through the mail, anywhere in ' + cfg.shippingState +
+        '. Just ask us about shipping when you send your inquiry.',
+      shippingLimitNote: 'Shipping is only available within ' + cfg.shippingState + '. If you are outside ' +
+        cfg.shippingState + ', please choose local pickup.',
+      chooseFulfilment: (e) => this.setState({ shipping: e.target.value !== 'Local pickup' }),
+
+      leadTimeNote: 'Please allow ' + lead + ' to ' + (lead + 2) +
+        ' days. Everything is made to order, and the earliest we can manage is ' +
+        prettyDate(this.earliestDate()) + '.',
+
+      // Webmail fallback for anyone with no email program set up on their computer.
+      gmailHref: 'https://mail.google.com/mail/?view=cm&fs=1&to=' + q(cfg.orderEmail) +
+        '&su=' + q(subject) + '&body=' + q(draft),
+      // Gmail refuses to load inside an embedded frame, so open a real tab.
+      openGmail: (e) => {
+        e.preventDefault();
+        const url = e.currentTarget.getAttribute('href');
+        const w = window.open(url, '_blank', 'noopener');
+        if (!w) window.location.href = url;
+      },
+      copyLabel: this.state.copied ? 'Copied' : 'Copy the message',
+      copyDraft: () => {
+        const done = () => {
+          this.setState({ copied: true });
+          setTimeout(() => this.setState({ copied: false }), 2500);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(draft).then(done, () => {
+            if (this.draftArea) { this.draftArea.select(); }
+          });
+        } else if (this.draftArea) {
+          this.draftArea.select();
+          document.execCommand('copy');
+          done();
+        }
+      },
+      sageHover: { background: 'color-mix(in srgb, var(--color-accent-2-700) 12%, transparent)' },
+      primaryHover: { background: 'var(--berry-deep)' },
+      outlineHover: { background: 'color-mix(in srgb, var(--berry) 8%, transparent)' },
+      onSubmit: (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const get = (n) => (form.elements[n].value || '').trim();
+        const name = get('name');
+        const contact = get('contact');
+        const product = get('product');
+        const qty = get('qty');
+        const date = get('date');
+        const message = get('message');
+
+        // ── Front-end validation ───────────────────────────────────────
+        const problems = [];
+        if (name.length < 2) problems.push('your name');
+        if (contact.length < 5) problems.push('an email address or phone number');
+        if (!product) problems.push('the product you are interested in');
+        if (!qty || Number(qty) < 1) problems.push('a quantity of at least 1');
+
+        // Honor the notice period even if the date was typed rather than picked.
+        const earliest = this.earliestDate();
+        if (date && date < earliest) {
+          this.setState({
+            errorText: 'We need ' + lead + ' to ' + (lead + 2) + ' days\u2019 notice, so the earliest date is ' +
+              prettyDate(earliest) + '.',
+            opened: false
+          });
+          if (this.dateInput) this.dateInput.focus();
+          return;
+        }
+
+        if (problems.length) {
+          this.setState({
+            errorText: 'Please add ' + problems.join(', ') + '.',
+            opened: false
+          });
+          const firstBad = form.querySelector('input:invalid') || form.elements['name'];
+          if (firstBad && firstBad.focus) firstBad.focus();
+          return;
+        }
+
+        // ── Build the email and hand it to the visitor's email program ──
+        const subject = 'Sugarberry Cottage order inquiry from ' + name;
+        const body = [
+          'Name: ' + name,
+          'Email or phone: ' + contact,
+          'Product: ' + product,
+          'Quantity: ' + qty,
+          'Pickup or shipping: ' + (shipping ? 'Shipped within ' + cfg.shippingState : 'Local pickup'),
+          'Preferred date: ' + (date || 'no preference'),
+          '',
+          'Message:',
+          message || '(none)'
+        ].join('\n');
+
+        this.setState({ errorText: '', opened: true, draft: body, subject: subject, copied: false });
+
+        // Hand the message to the visitor's email program. Some browsers block
+        // this, which is why the panel below also offers copy and webmail.
+        const link = document.createElement('a');
+        link.href = 'mailto:' + cfg.orderEmail +
+          '?subject=' + encodeURIComponent(subject) +
+          '&body=' + encodeURIComponent(body);
+        link.rel = 'noopener';
+        document.body.appendChild(link);
+        try { link.click(); } catch (err) { /* fallback panel covers it */ }
+        link.remove();
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

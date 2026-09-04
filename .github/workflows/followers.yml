@@ -1,0 +1,45 @@
+name: Update follower count
+
+# Runs every day at 13:00 UTC (8am Central), and on demand from the
+# Actions tab. It asks Facebook for the page's follower count and
+# rewrites the "const FOLLOWERS = N;" line in publish/giveaway.html.
+
+on:
+  schedule:
+    - cron: "0 13 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch follower count
+        id: fb
+        env:
+          PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+        run: |
+          set -e
+          RESP=$(curl -sS "https://graph.facebook.com/v21.0/${PAGE_ID}?fields=followers_count&access_token=${TOKEN}")
+          echo "$RESP" | grep -q followers_count || { echo "Facebook said: $RESP"; exit 1; }
+          COUNT=$(echo "$RESP" | sed -n 's/.*"followers_count":\([0-9]*\).*/\1/p')
+          [ -n "$COUNT" ] || { echo "No count in: $RESP"; exit 1; }
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+
+      - name: Rewrite the FOLLOWERS line
+        run: |
+          sed -i -E "s/^const FOLLOWERS = [0-9]+;$/const FOLLOWERS = ${{ steps.fb.outputs.count }};/" publish/giveaway.html
+          grep -n "^const FOLLOWERS = " publish/giveaway.html
+
+      - name: Commit if it changed
+        run: |
+          git config user.name "follower-bot"
+          git config user.email "actions@github.com"
+          git add publish/giveaway.html
+          git diff --staged --quiet || git commit -m "Follower count: ${{ steps.fb.outputs.count }}"
+          git push
