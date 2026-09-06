@@ -1,10 +1,15 @@
 # Sugarberry Cottage — website
 
-This folder is the website. Plain HTML, CSS and JavaScript — no frameworks,
-nothing to install, nothing to build. Upload everything in here and it works.
+The **`publish/`** folder is the website: plain HTML, CSS and JavaScript, no
+frameworks, nothing to install, nothing to build. Upload everything inside it
+and the site works. The `.dc.html` files alongside it are design working
+copies and are not part of the website.
 
-To change your products, open **`admin.html`**. That is the short answer to
-most questions below.
+Every file path below is relative to `publish/`.
+
+Your shop lives on **Square**. The website points people there and handles
+custom orders by message. Open **`publish/admin.html`** to set your Square
+address and switch the shop on.
 
 ## The website files
 
@@ -16,8 +21,7 @@ most questions below.
 | `order.html` | How to Order |
 | `faq.html` | FAQ, allergens, cottage food notice, privacy notice |
 | `contact.html` | Contact details and the order inquiry form |
-| `admin.html` | **The product manager.** Products, photos, ordering link |
-| `photo-finder.html` | Ready-made searches for free photos, one per product |
+| `admin.html` | **Your settings.** Square address and the shop switch |
 | `products-data.js` | What the product manager writes |
 | `site.css` | Your settings: colors, fonts, page rules, in numbered sections |
 | `theme.css` | The design system underneath. You should not need to edit it |
@@ -102,52 +106,37 @@ IONOS set the `@` `A` record to `75.2.60.5` and remove the `AAAA` record.
 
 ## Changing your products
 
-**Open `admin.html`.** Double-click it, or once the site is live visit
-`sugarberrycottage.net/admin.html`. It is a private page for you: visitors
-never see a link to it, and search engines are told to skip it.
+**Your shop lives on Square.** The website does not keep its own product list
+any more — the products page and the How to Order page both carry a **Visit
+the shop** button that sends people to Square, where they choose what they
+want and pay. Add, price and stock your products in Square.
 
-What you can do there:
+The website still handles the other half: custom flavours, large batches and
+anything for a particular occasion, which people arrange with you by message.
 
-- Add, edit, delete and reorder products
-- Change names, prices, descriptions and availability labels
-- Drop in a photo for any product. It is shrunk to a sensible size for the
-  web automatically, so pictures straight off your phone are fine
-- Change your ordering page address, in the box at the top
-- Switch ordering on or off with one switch
+### Switching the shop on
 
-Your changes are remembered by your browser as you work, so you can close the
-tab and come back. Nothing reaches the website until you press **Save
-everything**.
+Two things have to be true before visitors see the shop button:
 
-### Getting your changes onto the website
+1. **Open `admin.html`** and paste your Square store address into the box at
+   the top. You will find it in Square under **Online → Website → your site
+   address**. Typing it without the `https://` is fine, it gets added.
+2. Flip the **Shop closed** switch to **Shop open**.
 
-Pressing **Save everything** downloads `products-data.js`, plus one `.jpg` for
-each new photo. Then:
+Then press **Save everything**, and upload the `products-data.js` it gives you
+to your repository. Until both are done, visitors see the taped-off "coming
+soon" panel instead — which is the right thing to show while you are still
+setting Square up.
 
-1. Go to your repository on **github.com**.
-2. Click **Add file → Upload files**.
-3. Drag in `products-data.js`. It replaces the old one.
-4. For photos: open the `images` folder, then `products` inside it, and
-   upload them there.
-5. Click **Commit changes**. The site updates within a minute.
+If you set the switch to open but leave the address blank, the button says the
+shop is opening soon rather than leading anyone to a dead link.
 
-After the photos are uploaded, press **Clear saved photos** in the product
-manager. It only keeps them so you can see them while you work, and clearing
-makes room for the next batch.
+### About the product list in admin.html
 
-### Your ordering page
-
-Every **Order online** button points at the address in the box at the top of
-`admin.html`, currently your Cash App page. Change it in that one box and
-every button on the site follows.
-
-If you switch **Shop open** off, or leave the address empty, visitors see an
-opening-soon note instead of a dead button. The product list still shows
-either way, so people can always see what you make.
-
-Prices in the list are the ones I suggested from typical market rates, not
-worked out from your costs. Add up what a batch costs you, divide by units,
-multiply by three or four, and change them to match.
+There is still a list of products in the product manager, left over from
+before Square. **Editing it will not change your website** — Square is the
+shop now. It is only kept so nothing was thrown away. Ask me and I will remove
+that section.
 
 ## Where to change everything else
 

@@ -132,23 +132,9 @@ a[data-current="page"] { color: var(--berry); font-weight: 700; }
   overflow: visible; clip-path: none; color: #fff;
 }
 
-/* ---------- 6a. FOOD PHOTOS --------------------------------------------
-   The design system softens every photograph so it settles into the warm
-   page, using .washed in theme.css. That suits a landscape or a room, but
-   it turns bread grey and makes frosting look dusty, so here it is dialled
-   right back: full colour with the faintest lift, which still sits on the
-   cream page without looking faded.
-
-   To go back to the design system's original softening, delete this rule.
-   To push the colour further, raise the saturate number a little.      */
-.washed {
-  filter: saturate(1.04) contrast(1.02) brightness(1.01);
-}
-
 /* ---------- 6b. PRODUCT FILTER BUTTONS --------------------------------- */
 [data-chip] {
   white-space: nowrap;
-  min-height: 44px;
   background: transparent;
   border: 1px solid currentColor;
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
@@ -196,74 +182,3 @@ details[open] [data-faq-plus] { transform: rotate(45deg); }
   [data-print-list] { display: block !important; }
   [data-gallery] { display: none !important; }
 }
-
-
-/* ==========================================================================
-   8. STATIC SITE ADDITIONS
-   These rules only apply to the published website in this folder. They
-   replace hover and menu behaviour that the design preview handled itself.
-   ========================================================================== */
-
-/* Buttons and links darken slightly on hover, whatever colour they are. */
-a.btn:hover, button.btn:hover { filter: brightness(0.94); }
-a.btn:active, button.btn:active { filter: brightness(0.88); }
-
-/* Navigation bar links */
-[data-nav-links] a:hover { color: var(--berry); }
-#cottage-menu a:hover { color: var(--berry); }
-footer a:hover { color: var(--blush-deep); }
-
-/* The mobile menu is plain hidden markup until the button opens it. */
-#cottage-menu[hidden] { display: none; }
-#cottage-menu {
-  border-top: 1px solid var(--hairline);
-  background: var(--cream);
-  padding: 10px clamp(16px, 4vw, 44px) 18px;
-  display: flex;
-  flex-direction: column;
-  font-family: var(--font-body);
-  font-size: 17px;
-}
-#cottage-menu a {
-  color: var(--ink);
-  text-decoration: none;
-  padding: 13px 4px;
-  border-bottom: 1px solid var(--hairline);
-}
-#cottage-menu a:last-of-type { border-bottom: none; }
-#cottage-menu .btn { margin-top: 12px; align-self: flex-start; border-bottom: none; }
-
-/* Back-to-top button */
-[data-to-top][hidden] { display: none; }
-[data-to-top] {
-  position: fixed;
-  right: clamp(14px, 3vw, 30px);
-  bottom: clamp(14px, 3vw, 30px);
-  width: 50px; height: 50px;
-  display: inline-flex; align-items: center; justify-content: center;
-  border: none; border-radius: 999px;
-  background: var(--berry); color: #fff;
-  box-shadow: var(--shadow-md);
-  cursor: pointer; z-index: 70;
-}
-[data-to-top]:hover { background: var(--berry-deep); }
-
-/* Photo areas waiting for a real photograph. To use your own picture,
-   replace the whole <div class="photo-slot"> with:
-     <img src="images/your-photo.jpg" alt="what the photo shows">        */
-.photo-slot {
-  width: 100%; height: 100%;
-  display: flex; align-items: center; justify-content: center;
-  padding: 18px; box-sizing: border-box;
-  background: var(--color-neutral-200);
-  text-align: center;
-}
-.photo-slot span {
-  font-family: var(--font-body);
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--color-neutral-700);
-}
-
-/* Hidden things stay hidden. */
-[hidden] { display: none !important; }
