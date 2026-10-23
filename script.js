@@ -384,4 +384,64 @@
       });
     }
   }
+
+  /* ---------- 6. EVENTS & SEASON ----------------------------------------
+     The craft-show list lives in season.js. Nothing here needs editing.  */
+  var EVENTS = (window.SUGARBERRY_EVENTS || []).filter(function (ev) {
+    return new Date(ev.end) > new Date();
+  });
+
+  // The banner at the top of every page.
+  var banner = document.querySelector('[data-event-banner]');
+  if (banner && EVENTS.length) {
+    var today = EVENTS.filter(function (ev) { return new Date(ev.start) <= new Date(); })[0];
+    var line = today
+      ? '<strong>We are at the ' + safe(today.name) + ' today</strong>, ' + safe(today.hoursToday) + '. Come say hello.'
+      : '<strong>Come find our booth:</strong> ' + EVENTS.map(function (ev) {
+          return safe(ev.short) + ' in ' + safe(ev.town);
+        }).join(' &middot; ');
+    banner.innerHTML =
+      '<div style="max-width: 1240px; margin: 0 auto; padding: 11px clamp(16px, 4vw, 44px) 13px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 14px; text-align: center; font-family: var(--font-body); font-size: clamp(14px, 1.2vw, 15.5px); line-height: 1.45;">' +
+        '<span>' + line + '</span>' +
+        '<a href="index.html#events">Show details &rarr;</a>' +
+      '</div>';
+  }
+
+  // Home page: hide shows that are over, count down to the rest.
+  document.querySelectorAll('[data-event-end]').forEach(function (el) {
+    if (new Date(el.getAttribute('data-event-end')) <= new Date()) { el.hidden = true; }
+  });
+  var section = document.querySelector('[data-events-section]');
+  if (section && !EVENTS.length) { section.hidden = true; }
+  document.querySelectorAll('[data-countdown]').forEach(function (el) {
+    var start = new Date(el.getAttribute('data-countdown'));
+    var a = new Date(); a.setHours(0, 0, 0, 0);
+    var b = new Date(start); b.setHours(0, 0, 0, 0);
+    var days = Math.round((b - a) / 86400000);
+    el.textContent = days > 1 ? 'In ' + days + ' days' : days === 1 ? 'Tomorrow' : 'Happening now';
+  });
+
+  // Falling leaves or snow.
+  var season = document.documentElement.getAttribute('data-season');
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (season && !still) {
+    var layer = document.createElement('div');
+    layer.setAttribute('data-flurry', '');
+    layer.setAttribute('aria-hidden', 'true');
+    var count = window.innerWidth < 700 ? 9 : 16;
+    var colors = ['var(--flurry-1)', 'var(--flurry-2)', 'var(--flurry-3)'];
+    for (var i = 0; i < count; i++) {
+      var bit = document.createElement('i');
+      var size = season === 'christmas' ? 5 + Math.random() * 6 : 11 + Math.random() * 9;
+      bit.style.cssText =
+        '--x:' + (Math.random() * 100).toFixed(1) + 'vw;' +
+        '--s:' + size.toFixed(1) + 'px;' +
+        '--d:' + (11 + Math.random() * 10).toFixed(1) + 's;' +
+        '--delay:-' + (Math.random() * 20).toFixed(1) + 's;' +
+        '--drift:' + (Math.random() * 120 - 60).toFixed(0) + 'px;' +
+        '--c:' + colors[i % 3] + ';';
+      layer.appendChild(bit);
+    }
+    document.body.appendChild(layer);
+  }
 })();

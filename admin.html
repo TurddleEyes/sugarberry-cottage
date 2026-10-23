@@ -166,7 +166,7 @@
     <img src="images/logo-horizontal.png" alt="" style="height: 46px; width: auto;">
     <div>
       <h1 style="font-family: var(--font-serif); font-weight: 600; font-size: 26px; margin: 0; line-height: 1.1;">Product manager</h1>
-      <p style="font-family: var(--font-body); font-size: 14px; color: var(--ink-soft); margin: 3px 0 0;">Changes are kept on this computer until you download them.</p>
+      <p id="modeLine" style="font-family: var(--font-body); font-size: 14px; color: var(--ink-soft); margin: 3px 0 0;">Changes are kept on this computer until you download them.</p>
     </div>
 
     <button type="button" class="switch" id="shopToggle" role="switch" aria-checked="false" data-on="false">
@@ -206,7 +206,12 @@
 
 
 
-  <div class="note" style="margin-top: 26px;">
+  <div class="note" id="localNote" style="margin-top: 26px;" hidden>
+    <h2>When you have finished</h2>
+    <p style="margin: 0;">Press <strong>Save everything</strong> at the bottom. It writes <code>products-data.js</code> and any new photos straight into your website folder. Press <strong>Save &amp; Publish</strong> to put them online as well; the website updates within a minute or two.</p>
+  </div>
+
+  <div class="note" id="finishNote" style="margin-top: 26px;">
     <h2>When you have finished</h2>
     <p style="margin: 0;">Press <strong>Save everything</strong> at the bottom. Your browser will download a file called <code>products-data.js</code>, plus a photo file for each new picture you added.</p>
     <ol>
@@ -225,6 +230,7 @@
       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="M7 10l5 5 5-5"></path><path d="M12 15V3"></path></svg>
       Save everything
     </button>
+    <button type="button" class="btn-line" id="publishBtn" hidden>Save &amp; Publish</button>
     <span id="saveHint" style="font-family: var(--font-body); font-size: 14px; color: var(--ink-soft);"></span>
     <button type="button" class="btn-quiet" id="clearPhotosBtn" style="margin-left: auto;">Clear saved photos</button>
     <button type="button" class="btn-quiet btn-danger" id="resetBtn">Start over from the live site</button>
@@ -457,9 +463,17 @@
       state.products.length + (state.products.length === 1 ? ' product' : ' products');
 
     var pend = Object.keys(state.pending).length;
-    document.getElementById('saveHint').textContent = pend
-      ? 'You will get products-data.js plus ' + pend + (pend === 1 ? ' photo' : ' photos')
-      : 'You will get products-data.js';
+    var hint = document.getElementById('saveHint');
+    hint.style.color = '';
+    if (LOCAL) {
+      hint.textContent = pend
+        ? 'Saves products-data.js and ' + pend + (pend === 1 ? ' photo' : ' photos') + ' into your website folder'
+        : 'Saves products-data.js into your website folder';
+    } else {
+      hint.textContent = pend
+        ? 'You will get products-data.js plus ' + pend + (pend === 1 ? ' photo' : ' photos')
+        : 'You will get products-data.js';
+    }
     document.getElementById('clearPhotosBtn').disabled = pend === 0;
   }
 
@@ -568,7 +582,116 @@
   });
   syncOrdering();
 
+  /* ---------- saving through the site editor ------------------------------
+     Opened through the site editor on your own computer (editor/start.sh),
+     Save writes straight into the website folder and Save & Publish puts
+     it online. Opened any other way, including on the live site, Save
+     downloads the files exactly as before.                              */
+  var LOCAL = false;
+
+  function editorApi(name, body) {
+    var opts = body === undefined ? { cache: 'no-store' } : {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Sugarberry': '1' },
+      body: JSON.stringify(body)
+    };
+    return fetch('/__editor/api/' + name, opts).then(function (res) { return res.json(); }).catch(function () {
+      return { ok: false, offline: true, error: 'Can not reach the site editor. Is it still running?' };
+    });
+  }
+
+  if (/^(127\.0\.0\.1|localhost)$/.test(location.hostname)) {
+    editorApi('status').then(function (r) {
+      if (r.offline) { return; }
+      LOCAL = true;
+      document.getElementById('modeLine').textContent = 'Save writes straight into your website folder. Save & Publish puts it online.';
+      document.getElementById('finishNote').hidden = true;
+      document.getElementById('localNote').hidden = false;
+      document.getElementById('publishBtn').hidden = false;
+      document.getElementById('clearPhotosBtn').hidden = true;
+      render();
+    });
+  }
+
+  /* products-data.js written the way it is laid out now: its own notes at
+     the top kept as they are, one product per two lines, a blank line
+     between categories. Saving with nothing changed leaves it identical. */
+  function jsText(s) {
+    return "'" + String(s == null ? '' : s).replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\r?\n/g, ' ') + "'";
+  }
+  function buildLocalFile(existing) {
+    var at = existing.indexOf('window.SUGARBERRY = {');
+    if (at === -1) { return buildFile(); }
+    var lines = [];
+    state.products.forEach(function (p, i) {
+      var prev = state.products[i - 1];
+      if (prev && prev.cat !== p.cat) { lines.push(''); }
+      lines.push('    { key: ' + jsText(p.key) + ', name: ' + jsText(p.name) + ', cat: ' + jsText(p.cat) +
+        ', price: ' + jsText(p.price) + ', unit: ' + jsText(p.unit) + ', status: ' + jsText(p.status) +
+        ',\n      desc: ' + jsText(p.desc) + ', img: ' + jsText(p.img || '') + ', photo: ' + jsText(p.photo) + ' }' +
+        (i < state.products.length - 1 ? ',' : ''));
+    });
+    return existing.slice(0, at) + 'window.SUGARBERRY = {\n\n' +
+      '  orderingUrl: ' + jsText(state.orderingUrl || '') + ',\n\n' +
+      '  shopOpen: ' + (state.shopOpen ? 'true' : 'false') + ',\n\n' +
+      '  products: [\n' + lines.join('\n') + '\n  ]\n};\n';
+  }
+
+  function tell(text, bad) {
+    var hint = document.getElementById('saveHint');
+    hint.textContent = text;
+    hint.style.color = bad ? 'var(--berry)' : 'var(--color-accent-2-800)';
+  }
+
+  /* Photos first, then the product list, so the list never names a photo
+     that is not there yet. Resolves true once everything is saved. */
+  function saveLocal() {
+    var keys = Object.keys(state.pending);
+    tell('Saving…');
+    var chain = Promise.resolve();
+    keys.forEach(function (k) {
+      chain = chain.then(function () {
+        return editorApi('image', { name: k, data: state.pending[k], unique: false }).then(function (r) {
+          if (!r.ok) { throw new Error(r.error); }
+        });
+      });
+    });
+    return chain.then(function () {
+      return editorApi('file?path=products-data.js');
+    }).then(function (r) {
+      if (!r.ok) { throw new Error(r.error); }
+      return editorApi('save', { path: 'products-data.js', text: buildLocalFile(r.text), hash: r.hash });
+    }).then(function (r) {
+      if (!r.ok) { throw new Error(r.error); }
+      // Saved, so the photos are in the folder and this browser's draft is no longer needed.
+      state.pending = {};
+      window.SUGARBERRY = {
+        orderingUrl: state.orderingUrl, shopOpen: state.shopOpen,
+        products: JSON.parse(JSON.stringify(state.products))
+      };
+      try { localStorage.removeItem(STORE); } catch (e) { /* nothing to remove */ }
+      render();
+      tell(r.changed ? 'Saved. Press Save & Publish to put it online.' : 'Saved. Nothing had changed.');
+      return true;
+    }).catch(function (err) {
+      tell('Not saved: ' + err.message, true);
+      return false;
+    });
+  }
+
+  document.getElementById('publishBtn').addEventListener('click', function () {
+    saveLocal().then(function (ok) {
+      if (!ok) { return; }
+      tell('Publishing…');
+      return editorApi('publish', { message: 'Update products' }).then(function (r) {
+        if (r.ok) { tell('Published. The website updates within a minute or two.'); }
+        else { tell('Not published: ' + r.error, true); }
+      });
+    });
+  });
+
   document.getElementById('saveBtn').addEventListener('click', function () {
+    if (LOCAL) { saveLocal(); return; }
     download('products-data.js', new Blob([buildFile()], { type: 'text/javascript' }));
     var keys = Object.keys(state.pending);
     keys.forEach(function (k, i) {

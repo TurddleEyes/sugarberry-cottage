@@ -179,13 +179,13 @@ If their computer blocks that, the form shows the finished message with a
 the date box will accept. The wording "5 to 7 days" is ordinary text on the
 home, order, products, FAQ and contact pages — change those by hand too.
 
-**The under-construction banner** is the yellow strip at the top of
-`index.html`, in the block marked `UNDER CONSTRUCTION NOTICE`. Delete the
-whole block when the site is finished.
-
-**Construction decoration** — the rubble, cracks, tape and traffic cone on the
-home page are the elements marked `data-deco`. Delete them when you are done.
-They sit behind the words and cannot be clicked.
+**Holiday looks and craft shows** live in `season.js`. The site turns to its
+fall look from September 1 to Thanksgiving, its Christmas look from the day
+after Thanksgiving to January 6, and back to the plain look after that. To
+preview a look add `?season=fall`, `?season=christmas` or `?season=none`
+to the address. The craft-show list is at the bottom of the same file; each
+show drops out of the banner on its own once it ends. The show cards on the
+home page are in `index.html` under `CRAFT SHOWS`.
 
 **Shipping** — the site offers shipping within Illinois only, on the contact
 page and in the FAQ. The contact form asks pickup or shipping, and that choice
